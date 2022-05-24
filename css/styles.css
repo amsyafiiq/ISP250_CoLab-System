@@ -1,8 +1,13 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: 'pp_telegrafregular';
+  font-family: "pp_telegrafregular";
   font-size: 14px;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
 }
 
 p {
@@ -10,10 +15,6 @@ p {
 }
 
 body {
-  /* background-image: url('../img/bg.png');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover; */
   background-color: #191742;
   width: 100vw;
   height: 100vh;
@@ -33,17 +34,92 @@ header {
   padding: 0 10px 0 10px;
 }
 
-.hamburger-menu img {
+.left-container img {
   width: 30px;
+  cursor: pointer;
+}
+
+.bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px auto;
+  background-color: #b1aacb;
+}
+
+.hamburger {
+  cursor: pointer;
+}
+
+.navbar {
+  width: 400px;
+  position: fixed;
+  display: block;
+  top: 88px;
+  left: -25%;
+  height: 100vh;
+  background-color: #b1aacb;
+  transition: 0.25s ease-in-out;
+}
+
+.navbar.active {
+  left: 0px;
+}
+
+.navbar ul {
+  list-style: none;
+  background-color: #b1aacb;
+}
+
+.navbar ul li a {
+  color: #fff;
+  font-size: 20px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  padding-left: 40px;
+  text-shadow: 1px 1px 4px #000;
+}
+
+.navbar ul li .about {
+  border-top: 1px solid #fff;
+}
+
+.navbar ul li .help {
+  border-bottom: 1px solid #fff;
+}
+
+.navbar .logo-container {
+  position: relative;
+  display: flex;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  font-family: "glacial_indifferencebold";
+  background-color: #191742;
+}
+
+.navbar .logo-container::before {
+  content: "";
+  position: absolute;
+  bottom: -50px;
+  background-color: transparent;
+  height: 50px;
+  width: 25px;
+  left: 375px;
+  border-top-right-radius: 35px;
+  box-shadow: 0 -25px 0 0 #191742;
+}
+
+.navbar .logo-container p {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
 }
 
 .right-container {
   float: right;
-}
-
-.right-container a {
-  text-decoration: none;
-  color: #fff;
 }
 
 .right-container ul li {
@@ -81,12 +157,23 @@ main {
 
 .main-page {
   display: flex;
-  justify-content: left;
+  justify-content: center;
+  align-items: center;
   height: calc(100vh - 200px);
 }
 
 .main-page div {
-    font-size: 70px;
-    color: #fff;
-    font-family: 'pp_telegrafregular';
+  font-size: 70px;
+  color: #fff;
+  font-family: "pp_telegrafregular";
+}
+
+.logout-container a {
+  position: absolute;
+  top: 80%;
+  left: 32%;
+  padding: 10px 30px 10px 30px;
+  font-size: 20px;
+  border-radius: 10px;
+  background-color: #191742;
 }
