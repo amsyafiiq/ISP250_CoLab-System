@@ -56,7 +56,7 @@ header {
   position: fixed;
   display: block;
   top: 88px;
-  left: -25%;
+  left: -400px;
   height: 100vh;
   background-color: #b1aacb;
   transition: 0.25s ease-in-out;
@@ -64,6 +64,21 @@ header {
 
 .navbar.active {
   left: 0px;
+}
+
+.darken{
+  display: block;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  left: 0px;
+  background-color: rgba(0,0,0,0);
+  transition: 0.25s ease-in-out;
+}
+
+.darken.active {
+  left: 400px;
+  background-color: rgba(0,0,0,0.5);
 }
 
 .navbar ul {
@@ -171,7 +186,7 @@ main {
 .logout-container a {
   position: absolute;
   top: 80%;
-  left: 32%;
+  left: 115px;
   padding: 10px 30px 10px 30px;
   font-size: 20px;
   border-radius: 10px;
