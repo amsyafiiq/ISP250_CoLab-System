@@ -1,4 +1,11 @@
 
+body {
+  background-image: url(../img/bg.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
 .title-container {
   display: flex;
   justify-content: center;
@@ -16,6 +23,7 @@
   text-align: center;
   font-family: 'glacial_indifferencebold';
   font-size: 60px;
+  text-shadow: 2px 2px 4px;
 }
 
 .text-container p {
@@ -23,6 +31,8 @@
   font-family: 'glacial_indifferencebold';
   padding: 0;
   font-size: 30px;
+  color: #000;
+  text-shadow: 1px 1px 2px;
 }
 
 .main-page {
@@ -43,4 +53,5 @@
   font-size: 20px;
   font-family: 'pp_telegrafregular';
   border-radius: 100px;
+  box-shadow: 2px 2px 4px #000;
 }

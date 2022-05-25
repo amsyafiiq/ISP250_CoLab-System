@@ -6,7 +6,7 @@
     <title>UiTM Raub CoLab Systme</title>
     <link rel="stylesheet" href="../fonts/stylesheet.css" />
     <link rel="stylesheet" href="../css/styles.css" />
-    <link rel="stylesheet" href="../css/index-styles.css" />
+    <link rel="stylesheet" href="../css/new-stud-book.css" />
   </head>
   <body>
     <header>
@@ -48,18 +48,23 @@
     <main>
       <span class="darken"></span>
       <div class="title-container">
-        <div class="logo-container">
-          <img src="../img/uitm-logo.png" alt="" />
-        </div>
-        <div class="text-container">
-          <h3>UiTM RAUB</h3>
-          <p>Computer Lab System</p>
-        </div>
+        <p>BOOKING PAGE - New Book (Student)</p>
       </div>
       <div class="main-page">
-        <div class="nav-button">
-          <a href="#">BOOKING</a>
-          <a href="#">REPORT</a>
+        <div>
+          <form action="#">
+            <label for="purpose">BOOKING PURPOSE</label><br />
+            <input
+              type="text"
+              placeholder=""
+              id="purpose"
+              name="purpose"
+            /><br />
+            <label for="booking-date" id="date">BOOKING DATE</label>
+            <label for="booking-time" id="time">TIME</label><br />
+            <input type="date" id="booking-date" name="booking-date" />
+            <input type="time" id="booking-time" name="booking-time" />
+          </form>
         </div>
       </div>
     </main>

@@ -66,19 +66,20 @@ header {
   left: 0px;
 }
 
-.darken{
-  display: block;
+.darken {
+  display: none;
   position: fixed;
   width: 100vw;
   height: 100vh;
   left: 0px;
-  background-color: rgba(0,0,0,0);
+  background-color: rgba(0, 0, 0, 0);
   transition: 0.25s ease-in-out;
 }
 
 .darken.active {
+  display: block;
   left: 400px;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .navbar ul {
@@ -175,12 +176,6 @@ main {
   justify-content: center;
   align-items: center;
   height: calc(100vh - 200px);
-}
-
-.main-page div {
-  font-size: 70px;
-  color: #fff;
-  font-family: "pp_telegrafregular";
 }
 
 .logout-container a {

@@ -1,0 +1,35 @@
+.main-page {
+  display: block;
+}
+
+form {
+  padding: 30px;
+}
+
+label {
+  color: #fff;
+  margin: 10px;
+  font-size: 16px;
+}
+
+input[type=date], input[type=text], input[type=time] {
+  margin: 10px;
+  color: #000;
+  font-size: 16px;
+  outline: none;
+  border-radius: 5px;
+  border: none;
+  padding: 5px;
+}
+
+#purpose {
+  width: 50%;
+}
+
+#date {
+  padding-right: 10%;
+}
+
+#booking-date, #booking-time {
+  width: 20%;
+}
