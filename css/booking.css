@@ -1,0 +1,31 @@
+h1 {
+    color : white;
+    text-align: center;
+    margin: 100px;
+    font-size: 30px;
+}
+
+.link a {
+    background-color:#b1aacb;
+    color: white;
+    text-align: left;
+    padding: 10px;
+    font-family: "glacial_indifferencebold";
+    font-size: 22px;
+}
+
+.new-booking a{
+    padding: 10px 26.5px 10px 26.5px;
+}
+
+.main-page {
+    display:block;
+    justify-content: center;
+    font-family: "glacial_indifferencebold";
+}
+
+.link {
+    display: flex;
+    justify-content: center;
+    gap: 20%;
+}
