@@ -5,6 +5,7 @@
   # Pages
 
 |Progress           | Pages            | Name   |
+|-----------------------------------------------|
 |:white_check_mark_:|Index (Main Page) | Syafiq |
 
   1. [x] Index (Main Page)[syafiq]
