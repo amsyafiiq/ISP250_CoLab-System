@@ -52,7 +52,7 @@
       </div>
       <div class="main-page">
         <div>
-          <form action="#">
+          <form>
             <label for="purpose">BOOKING PURPOSE</label><br />
             <input
               type="text"
@@ -63,8 +63,13 @@
             <label for="booking-date" id="date">BOOKING DATE</label>
             <label for="booking-time" id="time">TIME</label><br />
             <input type="date" id="booking-date" name="booking-date" />
-            <input type="time" id="booking-time" name="booking-time" />
+            <input type="time" id="booking-time" name="booking-time" /><br />
+            <label for="computers">COMPUTER</label><br />
+            <select name="computer" id="computers">
+              <option value="-1">Select Computer</option>
+            </select>
           </form>
+          <button type="submit" id="submit">NEXT</button>
         </div>
       </div>
     </main>
