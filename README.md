@@ -4,8 +4,8 @@
 
   # Pages
 
-  - [x] Index (Main Page)[syafiq]
-  - [x] Login[syafiq]
+  1. [x] Index (Main Page)[syafiq]
+  2. [x] Login[syafiq]
   3. [x] Booking[Fizi]
   4. [x] New Booking Student[Syafiq]
   5. [ ] New Booking Staff[Syafiq]
