@@ -66,22 +66,6 @@ header {
   left: 0px;
 }
 
-.darken {
-  display: none;
-  position: fixed;
-  width: 100vw;
-  height: 100vh;
-  left: 0px;
-  background-color: rgba(0, 0, 0, 0);
-  transition: 0.25s ease-in-out;
-}
-
-.darken.active {
-  display: block;
-  left: 400px;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
 .navbar ul {
   list-style: none;
   background-color: #b1aacb;
