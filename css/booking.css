@@ -1,0 +1,44 @@
+.main-page {
+  display: grid;
+  grid-template-areas: 
+  'title title'
+  'new search';
+  justify-content: center;
+  align-items: center;
+  font-family: "glacial_indifferencebold";
+  gap: 20%;
+}
+
+h1 {
+  color: white;
+  text-align: center;
+  font-size: 30px;
+}
+
+.main-page a {
+    background-color:#b1aacb;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-family: "glacial_indifferencebold";
+    font-size: 22px;
+    border-radius: 30px;
+}
+
+.new-booking a {
+  padding: 20px 30.5px 20px 30.5px;
+}
+
+.title {
+    grid-area: title;
+}
+
+.new-booking {
+    grid-area: new;
+    margin-bottom: 200px;
+}
+
+.search-booking {
+    grid-area: search;
+    margin-bottom: 200px;
+}
