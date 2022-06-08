@@ -1,31 +1,44 @@
-h1 {
-    color : white;
-    text-align: center;
-    margin: 100px;
-    font-size: 30px;
+.main-page {
+  display: grid;
+  grid-template-areas: 
+  'title title'
+  'new search';
+  justify-content: center;
+  align-items: center;
+  font-family: "glacial_indifferencebold";
+  gap: 20%;
 }
 
-.link a {
+h1 {
+  color: white;
+  text-align: center;
+  font-size: 30px;
+}
+
+.main-page a {
     background-color:#b1aacb;
     color: white;
-    text-align: left;
-    padding: 10px;
+    text-align: center;
+    padding: 20px;
     font-family: "glacial_indifferencebold";
     font-size: 22px;
+    border-radius: 30px;
 }
 
-.new-booking a{
-    padding: 10px 26.5px 10px 26.5px;
+.new-booking a {
+  padding: 20px 30.5px 20px 30.5px;
 }
 
-.main-page {
-    display:block;
-    justify-content: center;
-    font-family: "glacial_indifferencebold";
+.title {
+    grid-area: title;
 }
 
-.link {
-    display: flex;
-    justify-content: center;
-    gap: 20%;
+.new-booking {
+    grid-area: new;
+    margin-bottom: 200px;
+}
+
+.search-booking {
+    grid-area: search;
+    margin-bottom: 200px;
 }
