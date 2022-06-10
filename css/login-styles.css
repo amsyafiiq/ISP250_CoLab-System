@@ -4,22 +4,26 @@
   color: #fff;
 }
 
-.title-container h3, .title-container p {
-  font-family: 'glacial_indifferencebold';
+.title-container h3,
+.title-container p {
+  font-family: "glacial_indifferencebold";
   color: #fff;
   text-align: center;
 }
 
 h3 {
   font-size: 100px;
+  font-family: 'Open Sans', sans-serif;
 }
 
 p {
   font-size: 50px;
+  font-family: 'Open Sans', sans-serif;
 }
 
 h5 {
   font-size: 24px;
+  font-family: 'Open Sans', sans-serif;
 }
 
 body {
@@ -34,9 +38,9 @@ body {
 .main-page {
   height: 100%;
   display: grid;
-  grid-template-areas: 
-  'title login'
-  'media login';
+  grid-template-areas:
+    "title login"
+    "media login";
 }
 
 .title-container {
@@ -56,31 +60,50 @@ body {
 }
 
 .form-container {
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(161, 161, 161, 0.3);
   padding: 50px;
 }
 
-input[type=text], input[type=radio] {
+input[type="text"],
+input[type="radio"] {
   padding: 10px;
   margin: 10px;
+  font-family: 'Open Sans', sans-serif;
 }
 
-input[type=text] {
+input[type="text"] {
   border-radius: 10px;
   outline: none;
   border: 0;
   width: 300px;
   color: #000;
   text-align: center;
+  font-family: 'Open Sans', sans-serif;
 }
 
-input[type=text]::placeholder {
+input[type="text"]::placeholder {
   text-align: center;
   color: #0f18195e;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .media-social {
   grid-area: media;
   height: 200px;
   width: 300px;
+}
+
+button[type="submit"] {
+  padding: 5px;
+  color: #000;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.error {
+  color: #ff4e4e;
+  font-size: 16px;
+}
+
+label {
+  font-family: 'Open Sans', sans-serif;
 }
