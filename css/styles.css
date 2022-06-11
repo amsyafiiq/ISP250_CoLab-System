@@ -157,6 +157,7 @@ main {
 
 .main-page {
   display: flex;
+  margin: 0% 10%;
   justify-content: center;
   align-items: center;
   height: calc(100vh - 200px);
@@ -170,4 +171,14 @@ main {
   font-size: 20px;
   border-radius: 10px;
   background-color: #191742;
+}
+
+.abt-h1{
+    text-align: left;
+    font-size: xx-large;
+    color: white;
+}
+
+.abt-h2{
+  color: white;
 }
