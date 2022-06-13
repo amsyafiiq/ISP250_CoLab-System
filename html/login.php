@@ -1,3 +1,7 @@
+<?php
+session_unset();
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -9,11 +13,11 @@
   <link rel="stylesheet" href="../css/login-styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
 </head>
 
 <body>
-  <header></header>
   <main>
     <div class="main-page">
       <div class="title-container">
@@ -27,24 +31,29 @@
           <div class="form-container">
             <h5>Welcome to CoLab RAUB!</h5><br>
             <form action="../php/login-valid.php" id="form" method="post">
-              <input type="text" placeholder="ID" name="id" id="id" /><br>
-              <input type="password" placeholder="Password" name="password" id="pass" /><br>
-              <?php
-              $radio = array("Staff", "Student");
+              <div>
+                <input type="text" placeholder="ID" name="id" id="id" pattern="[0-9]+" /><br>
+                <input type="password" placeholder="Password" name="password" id="pass" />
+                <i class="bi bi-eye-slash" id="togglePassword"></i><br>
+                <?php
+                $radio = array("Staff", "Student");
 
-              for ($i = 0; $i < count($radio); $i++) {
-                $j = $i + 1;
-                echo "<input type='radio' id='$radio[$i]' name='user' value='$j' onchange='changePlaceholder()' />";
-                echo "<label for='$radio[$i]'>$radio[$i]</label>";
-              }
-              ?>
-              <br><br>
-              <!-- <?php echo $_POST['radioValue']; ?> -->
-              <input type="hidden" id="radioValue" name="radioValue" value="" />
-              <?php if (isset($_GET['error'])) { ?>
+                for ($i = 0; $i < count($radio); $i++) {
+                  $j = $i + 1;
+                  echo "<input type='radio' id='$radio[$i]' name='user' value='$j' onchange='changePlaceholder()' />";
+                  echo "<label for='$radio[$i]'>$radio[$i]</label>";
+                }
+                ?>
+              </div>
+              <div>
+                <input type="hidden" id="radioValue" name="radioValue" value="" />
+                <?php if (isset($_GET['error'])) { ?>
                 <p class="error"> <?php echo $_GET['error']; ?> </p>
-              <?php } ?><br>
-              <button type="submit">LOGIN</button>
+                <?php } ?>
+              </div>
+              <div class="button-container">
+                <button type="submit">LOGIN</button>
+              </div>
             </form>
           </div>
         </div>

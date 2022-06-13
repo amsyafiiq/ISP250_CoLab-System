@@ -36,7 +36,7 @@ session_start();
             <li><a href="#" class="nav-link help">HELP</a></li>
           </ul>
           <div class="logout-container">
-            <a href="#">LOGOUT</a>
+            <a href="login.php">LOGOUT</a>
           </div>
         </nav>
       </div>

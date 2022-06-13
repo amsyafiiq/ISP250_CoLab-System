@@ -17,7 +17,7 @@ if ($radio == 1) {
   $sql = "SELECT * FROM `students` WHERE `studentno`='$id' AND `studenticno`='$password' ";
   $result = mysqli_query($conn, $sql);
 } else {
-  header("Location: ../html/login.php?error=Please Select Staff or Student");
+  header("Location: ../html/login.php?error=PLEASE SELECT STAFF OR STUDENT");
   exit();
 }
 
