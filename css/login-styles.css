@@ -13,17 +13,17 @@
 
 h3 {
   font-size: 100px;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 p {
   font-size: 50px;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 h5 {
   font-size: 24px;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 body {
@@ -65,26 +65,28 @@ body {
 }
 
 input[type="text"],
+input[type="password"],
 input[type="radio"] {
   padding: 10px;
   margin: 10px;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
-input[type="text"] {
+input[type="text"],
+input[type="password"] {
   border-radius: 10px;
   outline: none;
   border: 0;
   width: 300px;
   color: #000;
   text-align: center;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
-input[type="text"]::placeholder {
+input[type="text"]::placeholder, input[type="password"]::placeholder {
   text-align: center;
   color: #0f18195e;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 .media-social {
@@ -96,7 +98,7 @@ input[type="text"]::placeholder {
 button[type="submit"] {
   padding: 5px;
   color: #000;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 .error {
@@ -105,5 +107,5 @@ button[type="submit"] {
 }
 
 label {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
 }

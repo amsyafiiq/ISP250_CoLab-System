@@ -27,17 +27,24 @@
           <div class="form-container">
             <h5>Welcome to CoLab RAUB!</h5><br>
             <form action="../php/login-valid.php" id="form" method="post">
-              <input type="text" placeholder="username" name="username" /><br>
-              <input type="text" placeholder="password" name="password" id="pass" /><br>
-              <input type="radio" id="staff" name="user" value="1" />
-              <label for="staff">Staff</label>
-              <input type="radio" id="student" name="user" value="2"" />
-              <label for=" student">Student</label><br><br>
+              <input type="text" placeholder="ID" name="id" id="id" /><br>
+              <input type="password" placeholder="Password" name="password" id="pass" /><br>
+              <?php
+              $radio = array("Staff", "Student");
+
+              for ($i = 0; $i < count($radio); $i++) {
+                $j = $i + 1;
+                echo "<input type='radio' id='$radio[$i]' name='user' value='$j' onchange='changePlaceholder()' />";
+                echo "<label for='$radio[$i]'>$radio[$i]</label>";
+              }
+              ?>
+              <br><br>
+              <!-- <?php echo $_POST['radioValue']; ?> -->
+              <input type="hidden" id="radioValue" name="radioValue" value="" />
               <?php if (isset($_GET['error'])) { ?>
                 <p class="error"> <?php echo $_GET['error']; ?> </p>
               <?php } ?><br>
               <button type="submit">LOGIN</button>
-              <button type="button">hello</button>
             </form>
           </div>
         </div>
