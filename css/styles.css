@@ -157,7 +157,6 @@ main {
 
 .main-page {
   display: flex;
-  margin: 0% 10%;
   justify-content: center;
   align-items: center;
   height: calc(100vh - 200px);
