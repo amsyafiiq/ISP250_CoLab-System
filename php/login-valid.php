@@ -30,10 +30,12 @@ if (mysqli_num_rows($result) === 1) {
       $_SESSION['id'] = $row['USER_ID'];
       $_SESSION['username'] = $row['USER_NAME'];
       $_SESSION['password'] = $row['USER_PASSWORD'];
-      header("Location: ../html/inde.php");
+      $_SESSION['role'] = $row['ROLE_ID'];
+      $_SESSION['logged-in'] = true;
+      header("Location: ../html/index.php");
       exit();
     }
-    header("Location: ../html/login.php?error=INVALID USERNAME OR PASSWORDs");
+    header("Location: ../html/login.php?error=INVALID USERNAME OR PASSWORD");
     exit();
   } else if ($radio == 2) {
     if ($row['studentno'] === $id && $row['studenticno'] === $password) {
@@ -41,10 +43,12 @@ if (mysqli_num_rows($result) === 1) {
       $_SESSION['id'] = $row['studentno'];
       $_SESSION['username'] = $row['studentname'];
       $_SESSION['password'] = $row['studenticno'];
-      header("Location: ../html/inde.php");
+      $_SESSION['logged-in'] = true;
+      $_SESSION['role'] = -1;
+      header("Location: ../html/index.php");
       exit();
     }
-    header("Location: ../html/login.php?error=INVALID USERNAME OR PASSWORDs");
+    header("Location: ../html/login.php?error=INVALID USERNAME OR PASSWORD");
     exit();
   }
 } else {

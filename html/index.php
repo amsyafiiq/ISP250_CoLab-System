@@ -1,5 +1,9 @@
 <?php
 session_start();
+
+if (!isset($_SESSION['logged-in']) || $_SESSION['logged-in'] == false) {
+  header("Location: login.php");
+}
 ?>
 
 <!DOCTYPE html>
@@ -29,25 +33,32 @@ session_start();
             <p>UiTM RAUB Co Lab</p>
           </div>
           <ul class="nav-menu">
-            <li><a href="#" class="nav-link">HOME</a></li>
-            <li><a href="#" class="nav-link">BOOKING</a></li>
-            <li><a href="#" class="nav-link">REPORT</a></li>
-            <li><a href="#" class="nav-link about">ABOUT COLAB</a></li>
-            <li><a href="#" class="nav-link help">HELP</a></li>
+            <li><a href="index.php" class="nav-link">HOME</a></li>
+            <li><a href="booking.php" class="nav-link">BOOKING</a></li>
+            <li><a href="report.php" class="nav-link">REPORT</a></li>
+            <li><a href="about.php" class="nav-link about">ABOUT COLAB</a></li>
+            <li><a href="help.php" class="nav-link help">HELP</a></li>
           </ul>
           <div class="logout-container">
-            <a href="login.php">LOGOUT</a>
+            <a href="../php/logout.php">LOGOUT</a>
           </div>
         </nav>
       </div>
       <div class="name-holder">
-        <p><?php echo $_SESSION['username']; ?></p>
+        <p><?php
+            $username = $_SESSION['username'];
+            if (isset($_SESSION['username'])) {
+              echo "Logged as $_SESSION[username]";
+            } else {
+              echo "COLAB RAUB";
+            }
+            ?></p>
       </div>
     </div>
     <div class="right-container">
       <ul>
-        <li><a href="#">ABOUT COLAB</a></li>
-        <li><a href="#">HELP</a></li>
+        <li><a href="about.php">ABOUT COLAB</a></li>
+        <li><a href="help.php">HELP</a></li>
       </ul>
     </div>
   </header>
@@ -63,7 +74,7 @@ session_start();
     </div>
     <div class="main-page">
       <div class="nav-button">
-        <a href="search.php">BOOKING</a>
+        <a href="booking.php">BOOKING</a>
         <a href="#">REPORT</a>
       </div>
     </div>
