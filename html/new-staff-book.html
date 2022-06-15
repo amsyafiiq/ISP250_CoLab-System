@@ -3,10 +3,10 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="utf-8" />
-    <title>UiTM Raub CoLab Systme</title>
+    <title>UiTM Raub CoLab System</title>
     <link rel="stylesheet" href="../fonts/stylesheet.css" />
     <link rel="stylesheet" href="../css/styles.css" />
-    <link rel="stylesheet" href="../css/index-styles.css" />
+    <link rel="stylesheet" href="../css/new-stud-book.css" />
   </head>
   <body>
     <header>
@@ -47,18 +47,33 @@
     </header>
     <main>
       <div class="title-container">
-        <div class="logo-container">
-          <img src="../img/uitm-logo.png" alt="" />
-        </div>
-        <div class="text-container">
-          <h3>UiTM RAUB</h3>
-          <p>Computer Lab System</p>
-        </div>
+        <p>BOOKING PAGE - New Book (Staff)</p>
       </div>
       <div class="main-page">
-        <div class="nav-button">
-          <a href="#">BOOKING</a>
-          <a href="#">REPORT</a>
+        <div>
+          <form>
+            <label for="purpose">BOOKING PURPOSE</label><br />
+            <input
+              type="text"
+              placeholder=""
+              id="purpose"
+              name="purpose"
+            /><br />
+            <label for="booking-date" id="date">BOOKING DATE</label>
+            <label for="booking-time" id="time">TIME</label><br />
+            <input type="date" id="booking-date" name="booking-date" />
+            <input type="time" id="booking-time" name="booking-time" /><br /><br>
+            <label for="">DO YOU WANT TO BOOK COMPUTER OR LAB?</label>
+            <input type="radio" id="computer" name="lab-option" value="1">
+            <label for="computer">COMPUTER</label>
+            <input type="radio" id="lab" name="lab-option" value="2">
+            <label for="lab">LAB</label><br><br>
+            <label for="computers" id="computer-lbl">COMPUTER</label><br />
+            <select name="computer" id="computers">
+              <option value="-1">Select Computer</option>
+            </select>
+          </form>
+          <button type="submit" id="submit">NEXT</button>
         </div>
       </div>
     </main>
