@@ -4,22 +4,26 @@
   color: #fff;
 }
 
-.title-container h3, .title-container p {
-  font-family: 'glacial_indifferencebold';
+.title-container h3,
+.title-container p {
+  font-family: "glacial_indifferencebold";
   color: #fff;
   text-align: center;
 }
 
 h3 {
   font-size: 100px;
+  font-family: "Open Sans", sans-serif;
 }
 
 p {
   font-size: 50px;
+  font-family: "Open Sans", sans-serif;
 }
 
 h5 {
   font-size: 24px;
+  font-family: "Open Sans", sans-serif;
 }
 
 body {
@@ -34,9 +38,9 @@ body {
 .main-page {
   height: 100%;
   display: grid;
-  grid-template-areas: 
-  'title login'
-  'media login';
+  grid-template-areas:
+    "title login"
+    "media login";
 }
 
 .title-container {
@@ -50,37 +54,89 @@ body {
 .login-form {
   grid-area: login;
   display: grid;
+  gap: 300px;
   align-items: center;
   justify-content: center;
   text-align: center;
 }
 
 .form-container {
-  background-color: rgba(255, 255, 255, 0.3);
-  padding: 50px;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 200px 50px 50px 50px;
 }
 
-input[type=text], input[type=radio] {
-  padding: 10px;
+form {
+  display: grid;
+  gap: 40px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="radio"] {
+  padding: 10px 70px;
   margin: 10px;
+  font-family: "Open Sans", sans-serif;
 }
 
-input[type=text] {
+input[type="text"], input[type="password"] {
   border-radius: 10px;
   outline: none;
-  border: 0;
+  border: 2px solid rgba(255, 255, 255, 0);
   width: 300px;
   color: #000;
   text-align: center;
+  font-family: "Open Sans", sans-serif;
 }
 
-input[type=text]::placeholder {
+#pass {
+  margin-left: -30px;
+}
+
+input[type="text"]::placeholder,
+input[type="password"]::placeholder {
   text-align: center;
   color: #0f18195e;
+  font-family: "Open Sans", sans-serif;
+}
+
+input[type="text"]:invalid {
+  border: 2px solid red;
 }
 
 .media-social {
   grid-area: media;
   height: 200px;
   width: 300px;
+}
+
+button[type="submit"] {
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  padding: 10px 30px;
+  color: #000;
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+  background-color: #fff;
+  transition: all 0.25s ease-out;
+}
+
+button[type="submit"]:hover {
+  color: #fff;
+  background-color: #b2b2b2;
+}
+
+.error {
+  color: #ff4e4e;
+  font-size: 16px;
+}
+
+label {
+  font-family: "Open Sans", sans-serif;
+}
+
+form i {
+    margin-left: -60px;
+    cursor: pointer;
+    color: black;
 }
