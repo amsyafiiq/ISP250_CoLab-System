@@ -69,7 +69,7 @@ if (!isset($_SESSION['logged-in']) || $_SESSION['logged-in'] == false) {
     </div>
     <div class="main-page">
       <div>
-        <form>
+        <form action="../php/create-booking.php" method="post">
           <label for="purpose">BOOKING PURPOSE</label><br />
           <input type="text" placeholder="" id="purpose" name="purpose" /><br />
           <label for="booking-date" id="date">BOOKING DATE</label>
@@ -107,8 +107,8 @@ if (!isset($_SESSION['logged-in']) || $_SESSION['logged-in'] == false) {
               </select>
             </div>
           </div>
+          <button type="submit" id="submit" name="submit" value=2">NEXT</button>
         </form>
-        <button type="submit" id="submit">NEXT</button>
       </div>
     </div>
   </main>
