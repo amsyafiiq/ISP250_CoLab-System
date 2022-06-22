@@ -1,5 +1,6 @@
 <?php
 session_start();
+include "../php/db_conn.php";
 
 if (!isset($_SESSION['logged-in']) || $_SESSION['logged-in'] == false) {
   header("Location: login.php");
@@ -68,17 +69,39 @@ if (!$_SESSION['role'] == -1) {
   </header>
   <main>
     <div class="title-container">
-      <p>BOOKING PAGE</p>
+      <p>BOOKINGS</p>
     </div>
     <div class="main-page">
-      <div class="title">
-        <h1>Want to use the lab?</h1>
+      <div class="table-container">
+        <table class="table">
+          <tr>
+            <th>Purpose</th>
+            <th>Booked Date</th>
+            <th>Booked Time</th>
+            <th>Lab</th>
+            <th>Computer</th>
+            <th>Status</th>
+          </tr>
+          <?php 
+          $sql0 = "SELECT * FROM `vw_booking` WHERE `studentno` = $_SESSION[id]";
+          $result = mysqli_query($conn, $sql0);
+
+          while ($row = mysqli_fetch_array($result)) {
+            echo "<tr>";
+            echo "<th>$row[booking_Purpose]</th>";
+            echo "<th>$row[booking_UsageDate]</th>";
+            echo "<th>$row[booking_UsageTime]</th>";
+            echo "<th>$row[lab_ID]</th>";
+            echo "<th>$row[comp_ID]</th>";
+            echo "<th>$row[approve_Status]</th>";
+          }
+          ?>
+        </table>
       </div>
-      <div class="new-booking">
-        <a href="#" id="new-booking"> New Book </a>
-      </div>
-      <div class="search-booking">
-        <a href="#"> Search Booking </a>
+      <div>
+        <div class="button-container">
+          <a href="#" id="new-booking">New Booking</a>
+        </div>
       </div>
     </div>
   </main>

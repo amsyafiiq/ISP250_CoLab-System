@@ -47,14 +47,7 @@ $booking_data = $_SESSION['booking_data'];
         </nav>
       </div>
       <div class="name-holder">
-        <p><?php
-            $username = $_SESSION['username'];
-            if (isset($_SESSION['username'])) {
-              echo "Logged as $_SESSION[username]";
-            } else {
-              echo "COLAB RAUB";
-            }
-            ?></p>
+        <p>COLAB RAUB</p>
       </div>
     </div>
     <div class="right-container">
@@ -66,7 +59,7 @@ $booking_data = $_SESSION['booking_data'];
   </header>
   <main>
     <div class="title-container">
-      <p>BOOKING PAGE - Booking Info(STUDENT)</p>
+      <p>BOOKING PAGE - Booking Info(STAFF)</p>
     </div>
     <div class="mini-title">
       <span>Booking ID : </span><span id="p1"><?php echo $booking_data['id'] ?></span><br>
@@ -74,9 +67,9 @@ $booking_data = $_SESSION['booking_data'];
     <div class="main-page">
       <div>
         <?php
-        $sql0 = "SELECT * FROM `vw_student_phg` WHERE studentno = $_SESSION[id]";
+        $sql0 = "SELECT * FROM `vw_staff_phg` WHERE `USER_ID` = $_SESSION[id]";
         $result = mysqli_query($conn, $sql0);
-        $stud = mysqli_fetch_assoc($result);
+        $user = mysqli_fetch_assoc($result);
         ?>
         <table>
           <tr>
@@ -87,32 +80,18 @@ $booking_data = $_SESSION['booking_data'];
             <td id="username" name="username"><?php echo $_SESSION['username'] ?></td>
           </tr>
           <tr>
-            <th>Student No.</th>
+            <th>Staff No.</th>
             <td>
               <pre> : </pre>
             </td>
             <td id="id" name="id"><?php echo $_SESSION['id'] ?></td>
           </tr>
           <tr>
-            <th>Sesi</th>
+            <th>Staff Email</th>
             <td>
               <pre> : </pre>
             </td>
-            <td id="sesi" name="sesi"><?php echo $stud['semesterintake'] ?></td>
-          </tr>
-          <tr>
-            <th>Course Code</th>
-            <td>
-              <pre> : </pre>
-            </td>
-            <td id="coursecode" name="coursecode"><?php echo $stud['programmecode'] ?></td>
-          </tr>
-          <tr>
-            <th>Course Name</th>
-            <td>
-              <pre> : </pre>
-            </td>
-            <td id="coursename" name="coursename"><?php echo $stud['programmetitleenglish'] ?></td>
+            <td id="staffemail" name="staffemail"><?php echo $user['USER_EMAIL'] ?></td>
           </tr>
         </table>
       </div>
@@ -150,7 +129,7 @@ $booking_data = $_SESSION['booking_data'];
       </div>
     </div>
     <div class="confirm">
-      <button type="submit"><a href="../php/submit-booking.php">Confirm Booking</a></button>
+      <<button type="submit"><a href="../php/submit-booking.php">Confirm Booking</a></button>
     </div>
   </main>
   <footer></footer>

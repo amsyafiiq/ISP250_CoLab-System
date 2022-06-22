@@ -38,19 +38,31 @@ td {
   line-height: 1cm;
 }
 
-button {
+.confirm { 
+  display: flex;
+  width: 100%;
+  padding-top: 200px;
   justify-content: center;
+}
+
+button {
   background-color: #b1aacb;
   border: none;
-  width: 130px;
   color: white;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
   padding: 10px;
-  font-family: "glacial_indifferencebold";
-  font-size: 5px;
-  border-radius: 10px;
+  font-family: "glacial_indifferencebold"; 
+  width: 200px;
+  border-radius: 20px;
+  text-shadow: 1px 2px 2px black;
+  transition: all 200ms ease-in;
+}
+
+button:hover {
+  background-color: #6e697e;
+}
+
+button a {
   font-size: 20px;
-  margin-left: 35%;
 }
