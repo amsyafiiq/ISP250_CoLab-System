@@ -1,57 +1,101 @@
-
 body {
-  background-image: url(../img/bg.png);
+  background-image: url(../img/bg2.png);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
 }
 
-.title-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 50px;
-  height: 200px;
+main {
+  margin: 30px 30px 0 270px;
 }
 
-.title-container .logo-container img {
-  padding-top: 20px;
-  width: 80px;
+main h3,
+main h4,
+main h5,
+main p {
+  font-family: "Open Sans";
+  color: white;
 }
 
 .text-container h3 {
-  text-align: center;
-  font-family: 'glacial_indifferencebold';
-  font-size: 60px;
-  text-shadow: 2px 2px 4px;
+  font-family: "glacial_indifferenceregular";
+  border-bottom: 1px solid #fff;
+  font-size: 30px;
+  color: #fff;
 }
 
 .text-container p {
-  text-align: center;
-  font-family: 'glacial_indifferencebold';
-  padding: 0;
-  font-size: 30px;
-  color: #000;
-  text-shadow: 1px 1px 2px;
+  margin-top: 10px;
+  font-family: "glacial_indifferenceregular";
+  font-size: 22px;
 }
 
-.main-page {
-  display: flex;
+.grid-container h4 {
+  font-size: 22px;
+}
+
+.grid-container h5 {
+  font-size: 13px;
+}
+
+.grid-container p {
+  font-family: "glacial_indifferencebold";
+  font-size: 18px;
+}
+
+.grid-container {
+  margin-top: 30px;
+  display: grid;
+  grid-template-areas:
+    "booking approve rejected book"
+    "booking status status book"
+    "how how how how";
+  gap: 50px;
+}
+
+.grid-container div {
+  background-color: rgba(124, 124, 124, 0.3);
+  padding: 30px;
+  border-radius: 20px;
+}
+
+.booking {
+  grid-area: booking;
+}
+
+.approve {
+  grid-area: approve;
+}
+
+.rejected {
+  grid-area: rejected;
+}
+
+.status {
+  grid-area: status;
+}
+
+.book-count {
+  grid-area: book;
+}
+
+.how-to {
+  grid-area: how;
+  display: grid;
   justify-content: center;
-  align-items: center;
-  height: calc(100vh - 300px);
 }
 
-.nav-button {
-  display: flex;
-  gap: 300px;
+.count-container {
+  display: grid;
+  grid-template-columns: auto auto;
 }
 
-.nav-button a {
-  background-color: #b1aacb;
-  padding: 20px;
-  font-size: 20px;
-  font-family: 'pp_telegrafregular';
-  border-radius: 100px;
-  box-shadow: 2px 2px 4px #000;
+.how-to h4 {
+  text-align: center;
+}
+
+.how-to li {
+  color: white;
+  font-family: "glacial_indifferenceregular";
+  font-size: 18px;
 }

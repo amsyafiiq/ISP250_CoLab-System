@@ -11,10 +11,10 @@ $sql;
 $result;
 
 if ($radio == 1) {
-  $sql = "SELECT * FROM `user` WHERE `USER_ID`='$id' AND `USER_PASSWORD`='$password' ";
+  $sql = "SELECT * FROM `vw_staff_phg` WHERE `USER_ID`='$id' AND `USER_PASSWORD`='$password' ";
   $result = mysqli_query($conn, $sql);
 } else if ($radio == 2) {
-  $sql = "SELECT * FROM `students` WHERE `studentno`='$id' AND `studenticno`='$password' ";
+  $sql = "SELECT * FROM `vw_student_phg` WHERE `studentno`='$id' AND `studenticno`='$password' ";
   $result = mysqli_query($conn, $sql);
 } else {
   header("Location: ../html/login.php?error=PLEASE SELECT STAFF OR STUDENT");

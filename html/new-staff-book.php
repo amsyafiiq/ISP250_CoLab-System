@@ -1,5 +1,6 @@
 <?php
 session_start();
+include "../php/db_conn.php";
 
 if (!isset($_SESSION['logged-in']) || $_SESSION['logged-in'] == false) {
   header("Location: login.php");
@@ -15,7 +16,7 @@ if (!isset($_SESSION['logged-in']) || $_SESSION['logged-in'] == false) {
   <title>UiTM Raub CoLab System</title>
   <link rel="stylesheet" href="../fonts/stylesheet.css" />
   <link rel="stylesheet" href="../css/styles.css" />
-  <link rel="stylesheet" href="../css/new-stud-book.css" />
+  <link rel="stylesheet" href="../css/new-staff-book.css" />
 </head>
 
 <body>
@@ -68,29 +69,82 @@ if (!isset($_SESSION['logged-in']) || $_SESSION['logged-in'] == false) {
     </div>
     <div class="main-page">
       <div>
-        <form>
+        <form action="../php/create-booking.php" method="post">
           <label for="purpose">BOOKING PURPOSE</label><br />
           <input type="text" placeholder="" id="purpose" name="purpose" /><br />
           <label for="booking-date" id="date">BOOKING DATE</label>
           <label for="booking-time" id="time">TIME</label><br />
           <input type="date" id="booking-date" name="booking-date" />
-          <input type="time" id="booking-time" name="booking-time" /><br /><br>
+          <input type="time" id="booking-time" name="booking-time" /><br /><br><br>
           <label for="">DO YOU WANT TO BOOK COMPUTER OR LAB?</label>
-          <input type="radio" id="computer" name="lab-option" value="1">
+          <input type="radio" id="computer" name="lab-option" value="1" checked>
           <label for="computer">COMPUTER</label>
           <input type="radio" id="lab" name="lab-option" value="2">
           <label for="lab">LAB</label><br><br>
-          <label for="computers" id="computer-lbl">COMPUTER</label><br />
-          <select name="computer" id="computers">
-            <option value="-1">Select Computer</option>
-          </select>
+
+          <div class="select-container">
+            <div>
+              <label for="lab">LAB</label><br>
+              <select name="lab" id="lab" class="lab">
+                <option value="-1">Select Lab</option>
+                <?php
+                $sql = "SELECT * from `LAB`";
+                $query = mysqli_query($conn, $sql);
+                if (mysqli_num_rows($query) == 0) {
+                  echo "ERROR";
+                } else {
+                  while ($row = mysqli_fetch_assoc($query)) {
+                    echo "<option value=" . $row['lab_ID'] . ">$row[lab_Name]</option>";
+                  }
+                }
+                ?>
+              </select>
+            </div>
+            <div class="computer-container">
+              <label for="computers">COMPUTER</label><br />
+              <select name="computer" id="computers">
+                <option value="-1">Select Computer</option>
+              </select>
+            </div>
+          </div>
+          <button type="submit" id="submit" name="submit" value=2">NEXT</button>
         </form>
-        <button type="submit" id="submit">NEXT</button>
       </div>
     </div>
   </main>
   <footer></footer>
 </body>
 <script src="../js/main.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $("select.lab").change(function() {
+      var selectedLab = $(".lab option:selected").val();
+      $.ajax({
+        type: "POST",
+        url: "process-request.php",
+        data: {
+          lab: selectedLab
+        }
+      }).done(function(data) {
+        $("#computers").html(data);
+      });
+    });
+  });
+</script>
+<script>
+  const radio = document.getElementsByName("lab-option");
+
+  radio.forEach(n => n.addEventListener("change", visible));
+
+  function visible() {
+    console.log(1);
+    if (radio[1].checked) {
+      document.querySelector(".computer-container").classList.toggle("active");
+    } else {
+      document.querySelector(".computer-container").classList.remove("active");
+    }
+  }
+</script>
 
 </html>

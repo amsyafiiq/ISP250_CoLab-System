@@ -1,10 +1,12 @@
+body {
+  background-image: url(../img/bg2.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
 .main-page {
   display: grid;
-  grid-template-areas: 
-  'title title'
-  'new search';
-  justify-content: center;
-  align-items: center;
   font-family: "glacial_indifferencebold";
   gap: 20%;
 }
@@ -29,16 +31,6 @@ h1 {
   padding: 20px 30.5px 20px 30.5px;
 }
 
-.title {
-    grid-area: title;
-}
-
-.new-booking {
-    grid-area: new;
-    margin-bottom: 200px;
-}
-
-.search-booking {
-    grid-area: search;
-    margin-bottom: 200px;
+table td, th {
+  color: white;
 }

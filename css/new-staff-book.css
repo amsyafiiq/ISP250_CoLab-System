@@ -46,7 +46,7 @@ input[type="text"] {
 select {
   padding: 5px;
   margin: 10px;
-  width: 25%;
+  width: 100%;
   border-radius: 5px;
   text-align: center;
   outline: none;
@@ -74,4 +74,24 @@ button {
 
 button:hover {
   background-color: #6e697e;
+}
+
+.select-container {
+  display: flex;
+  gap: 30px;
+}
+
+.select-container div {
+  width :20%;
+}
+
+.computer-container {
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0s linear, left 300ms ease-out;
+}
+.computer-container.active {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s linear, opacity 300ms ease-in;
 }
