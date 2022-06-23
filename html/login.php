@@ -48,17 +48,18 @@ session_unset();
               <div>
                 <input type="hidden" id="radioValue" name="radioValue" value="" />
                 <?php if (isset($_GET['error'])) { ?>
-                <p class="error"> <?php echo $_GET['error']; ?> </p>
+                  <p class="error"> <?php echo $_GET['error']; ?> </p>
                 <?php } ?>
               </div>
-              <div class="button-container">
+              <div>
                 <button type="submit">LOGIN</button>
               </div>
             </form>
           </div>
         </div>
       </div>
-      <div class="media-social"></div>
+      <div class=" media-social">
+      </div>
     </div>
   </main>
   <footer></footer>
