@@ -18,6 +18,7 @@ $booking_data = $_SESSION['booking_data'];
   <link rel="stylesheet" href="../fonts/stylesheet.css" />
   <link rel="stylesheet" href="../css/styles.css" />
   <link rel="stylesheet" href="../css/studentBookingInfo.css" />
+
 </head>
 
 <body>
@@ -37,7 +38,6 @@ $booking_data = $_SESSION['booking_data'];
           <ul class="nav-menu">
             <li><a href="index.php" class="nav-link">HOME</a></li>
             <li><a href="booking.php" class="nav-link">BOOKING</a></li>
-            <li><a href="report.php" class="nav-link">REPORT</a></li>
             <li><a href="about.php" class="nav-link about">ABOUT COLAB</a></li>
             <li><a href="help.php" class="nav-link help">HELP</a></li>
           </ul>
@@ -74,9 +74,15 @@ $booking_data = $_SESSION['booking_data'];
     <div class="main-page">
       <div>
         <?php
-        $sql0 = "SELECT * FROM `vw_student_phg` WHERE studentno = $_SESSION[id]";
-        $result = mysqli_query($conn, $sql0);
-        $stud = mysqli_fetch_assoc($result);
+        if (isset($booking_data['userid'])) {
+          $sql0 = "SELECT * FROM `vw_student_phg` WHERE `studentno` = $booking_data[userid]";
+          $result = mysqli_query($conn, $sql0);
+          $stud = mysqli_fetch_assoc($result);
+        } else {
+          $sql0 = "SELECT * FROM `vw_student_phg` WHERE `studentno` = $_SESSION[id]";
+          $result = mysqli_query($conn, $sql0);
+          $stud = mysqli_fetch_assoc($result);
+        }
         ?>
         <table>
           <tr>
@@ -84,14 +90,14 @@ $booking_data = $_SESSION['booking_data'];
             <td>
               <pre> : </pre>
             </td>
-            <td id="username" name="username"><?php echo $_SESSION['username'] ?></td>
+            <td id="username" name="username"><?php echo $stud['studentname'] ?></td>
           </tr>
           <tr>
             <th>Student No.</th>
             <td>
               <pre> : </pre>
             </td>
-            <td id="id" name="id"><?php echo $_SESSION['id'] ?></td>
+            <td id="id" name="id"><?php echo $stud['studentno'] ?></td>
           </tr>
           <tr>
             <th>Sesi</th>
@@ -150,11 +156,43 @@ $booking_data = $_SESSION['booking_data'];
       </div>
     </div>
     <div class="confirm">
-      <button type="submit"><a href="../php/submit-booking.php">Confirm Booking</a></button>
+      <?php
+      echo "<button type=\"submit\"><a href=\"../php/submit-booking.php?id=$booking_data[id]\">Submit Booking</a></button>"
+      ?>
+    </div>
+    <div class="delete">
+      <?php
+      echo "<button type=\"submit\"><a href=\"../php/delete-booking.php?id=$booking_data[id]\" onclick='confirmDelete()'>Delete Booking</a></button>"
+      ?>
     </div>
   </main>
   <footer></footer>
 </body>
 <script src="../js/main.js"></script>
+<script>
+  function confirmDelete() {
+    if (confirm("Do you want to delete the booking?") == true) {
 
+    } else {
+      event.preventDefault();
+    }
+  }
+</script>
+<script>
+  var data =
+    <?php
+    if (isset($_GET['data'])) {
+      echo "\"$_GET[data]\"";
+    }
+    ?>
+
+  if (data == 1) {
+    document.querySelector(".delete").style.visibility = "visible";
+    document.querySelector(".confirm").style.visibility = "hidden";
+  }
+  if (data == 2) {
+    document.querySelector(".delete").style.visibility = "hidden";
+    document.querySelector(".confirm").style.visibility = "visible";
+  }
+</script>
 </html>

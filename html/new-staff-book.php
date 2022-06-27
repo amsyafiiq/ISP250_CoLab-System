@@ -36,7 +36,6 @@ if (!isset($_SESSION['logged-in']) || $_SESSION['logged-in'] == false) {
           <ul class="nav-menu">
             <li><a href="index.php" class="nav-link">HOME</a></li>
             <li><a href="booking.php" class="nav-link">BOOKING</a></li>
-            <li><a href="report.php" class="nav-link">REPORT</a></li>
             <li><a href="about.php" class="nav-link about">ABOUT COLAB</a></li>
             <li><a href="help.php" class="nav-link help">HELP</a></li>
           </ul>

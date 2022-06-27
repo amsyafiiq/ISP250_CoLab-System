@@ -9,6 +9,12 @@ if (!isset($_SESSION['logged-in']) || $_SESSION['logged-in'] == false) {
 if (!$_SESSION['role'] == -1) {
   $_SESSION['role'] = 1;
 }
+
+
+$sql0 = "SELECT * FROM `vw_booking` WHERE `studentno` = $_SESSION[id]";
+$result = mysqli_query($conn, $sql0);
+$table = mysqli_fetch_array($result);
+
 ?>
 
 <!DOCTYPE html>
@@ -18,10 +24,14 @@ if (!$_SESSION['role'] == -1) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta charset="utf-8" />
   <title>UiTM Raub CoLab Systme</title>
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
   <link rel="stylesheet" href="../fonts/stylesheet.css" />
   <link rel="stylesheet" href="../css/styles.css" />
   <link rel="stylesheet" href="../css/booking.css" />
-</head>
+
 
 <body>
   <header>
@@ -40,7 +50,6 @@ if (!$_SESSION['role'] == -1) {
           <ul class="nav-menu">
             <li><a href="index.php" class="nav-link">HOME</a></li>
             <li><a href="booking.php" class="nav-link">BOOKING</a></li>
-            <li><a href="report.php" class="nav-link">REPORT</a></li>
             <li><a href="about.php" class="nav-link about">ABOUT COLAB</a></li>
             <li><a href="help.php" class="nav-link help">HELP</a></li>
           </ul>
@@ -73,29 +82,59 @@ if (!$_SESSION['role'] == -1) {
     </div>
     <div class="main-page">
       <div class="table-container">
-        <table class="table">
-          <tr>
-            <th>Purpose</th>
-            <th>Booked Date</th>
-            <th>Booked Time</th>
-            <th>Lab</th>
-            <th>Computer</th>
-            <th>Status</th>
-          </tr>
-          <?php 
-          $sql0 = "SELECT * FROM `vw_booking` WHERE `studentno` = $_SESSION[id]";
-          $result = mysqli_query($conn, $sql0);
+        <table id="table" class="table hover">
+          <thead>
+            <tr>
+              <th>Purpose</th>
+              <th>Booked Date</th>
+              <th>Booked Time</th>
+              <th>Lab</th>
+              <th>Computer</th>
+              <th>Status</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php
+            if ($_SESSION['role'] == -1) {
+              $sql0 = "SELECT * FROM `vw_booking` WHERE `studentno` = $_SESSION[id]";
+              $result = mysqli_query($conn, $sql0);
 
-          while ($row = mysqli_fetch_array($result)) {
-            echo "<tr>";
-            echo "<th>$row[booking_Purpose]</th>";
-            echo "<th>$row[booking_UsageDate]</th>";
-            echo "<th>$row[booking_UsageTime]</th>";
-            echo "<th>$row[lab_ID]</th>";
-            echo "<th>$row[comp_ID]</th>";
-            echo "<th>$row[approve_Status]</th>";
-          }
-          ?>
+              while ($row = mysqli_fetch_array($result)) {
+                $i = 0;
+                echo "<tr>";
+                echo "<td>$row[booking_Purpose]</td>";
+                echo "<td>$row[booking_UsageDate]</td>";
+                echo "<td>$row[booking_UsageTime]</td>";
+                echo "<td>$row[lab_Name]</td>";
+                echo "<td>$row[comp_ID]</td>";
+                echo "<td>$row[approve_Status]</td>";
+                echo "<td>
+                        <a id='button' href='../php/view-booking.php?id=$row[booking_ID]'>View</a>
+                      </td>";
+                $i++;
+              }
+            } else {
+              $sql0 = "SELECT * FROM `vw_booking` WHERE `USER_ID` = $_SESSION[id]";
+              $result = mysqli_query($conn, $sql0);
+
+              while ($row = mysqli_fetch_array($result)) {
+                $i = 0;
+                echo "<tr>";
+                echo "<td>$row[booking_Purpose]</td>";
+                echo "<td>$row[booking_UsageDate]</td>";
+                echo "<td>$row[booking_UsageTime]</td>";
+                echo "<td>$row[lab_Name]</td>";
+                echo "<td>$row[comp_ID]</td>";
+                echo "<td>$row[approve_Status]</td>";
+                echo "<td>
+                        <a id='button' href='../php/view-booking.php?id=$row[booking_ID]'>View</a>
+                      </td>";
+                $i++;
+              }
+            }
+            ?>
+          </tbody>
         </table>
       </div>
       <div>
@@ -110,13 +149,25 @@ if (!$_SESSION['role'] == -1) {
 <script src="../js/main.js"></script>
 <script>
   var role = "<?php echo $_SESSION['role'] ?>";
-  console.log(role);
-
   if (role == -1) {
     document.querySelector("#new-booking").href = "new-stud-book.php";
   } else {
     document.querySelector("#new-booking").href = "new-staff-book.php";
   }
 </script>
+<script>
+  $(document).ready(function() {
+    $('#table.table').DataTable({
+      "pagingType": "simple",
+      "pageLength": 9,
+      "lengthChange": false,
+    });
+  });
+</script>
+<?php
+if (isset($_GET['message'])) {
+  echo "<script>alert('$_GET[message]')</script>";
+}
+?>
 
 </html>

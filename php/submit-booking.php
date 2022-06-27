@@ -3,7 +3,7 @@ session_start();
 include "../php/db_conn.php";
 $booking_data = $_SESSION['booking_data'];
 
-if ($booking_data['comp'] === -1) {
+if ($booking_data['comp'] == -1) {
   $sql = "INSERT INTO `booking` (booking_ID, booking_Purpose, booking_TimeDate, booking_UsageDate, booking_UsageTime, `USER_ID`, lab_Id)" .
     "VALUES ('$booking_data[id]', '$booking_data[purpose]', '$booking_data[currDateTime]', '$booking_data[bookedDate]', '$booking_data[bookedTime]', '$_SESSION[id]', $booking_data[lab])";
 } else {
@@ -14,10 +14,10 @@ if ($booking_data['comp'] === -1) {
     $sql =
       "INSERT INTO `booking` (booking_ID, booking_Purpose, booking_TimeDate, booking_UsageDate, booking_UsageTime, comp_ID, `studentno`, lab_Id)" .
       "VALUES ('$booking_data[id]', '$booking_data[purpose]', '$booking_data[currDateTime]', '$booking_data[bookedDate]', '$booking_data[bookedTime]', '$booking_data[comp]', '$_SESSION[id]', $booking_data[lab])";
-    echo $sql;
+    
   }
 }
-
+echo $sql;
 
 if (mysqli_query($conn, $sql)) {
   echo "<script>alert('Data saved. Please check from time to time for the approval')</script>";
