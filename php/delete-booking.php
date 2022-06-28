@@ -9,7 +9,7 @@ if (isset($_GET['id'])) {
 
   if (mysqli_query($conn, $sql0)) {
     if (mysqli_query($conn, $sql)) {
-      header("Location: ../html/booking.php?message=Booking Succesfully Deleted");
+      header("Location: ../html/booking.php?message=BOOKING SUCCESSFULLY DELETED");
     } else {
       mysqli_error($conn);
     }

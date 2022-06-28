@@ -102,3 +102,32 @@ table a:hover {
   background-color: #6e697e;
   cursor: pointer;
 }
+
+.message {
+  width: 350px;
+  height: 70px;
+  position: fixed;
+  right: 2%;
+  top: 11%;
+  background-color: #634b66;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.message p {
+  padding: 10px 35px 10px 0px;
+  /* text-align: center; */
+}
+
+.message i {
+  position: relative;
+  left: 92%;
+  /* top: 13%; */
+  color: #fff;
+  transition: visibility 0s, opacity 200ms ease-out;
+}
+
+.message i:hover {
+  cursor: pointer;
+}

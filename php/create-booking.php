@@ -43,7 +43,7 @@ if (isset($_POST['submit'])) {
   } else {
     $booking_data += array("id-type" => "staff");
     $_SESSION['booking_data'] = $booking_data;
-    header("Location: ../html/staffBookinginfo.phpdata=2");
+    header("Location: ../html/staffBookinginfo.php?data=2");
   }
 }
 

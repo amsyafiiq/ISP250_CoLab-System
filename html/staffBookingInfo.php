@@ -145,25 +145,43 @@ $booking_data = $_SESSION['booking_data'];
       </div>
     </div>
     <div class="confirm">
-      <button type="submit"><a href="../php/submit-booking.php">Confirm Booking</a></button>
+      <?php
+      echo "<button type=\"submit\"><a href=\"../php/submit-booking.php?id=$booking_data[id]\">Submit Booking</a></button>"
+      ?>
     </div>
     <div class="delete">
-      <button type="submit"><a href="../php/submit-booking.php">Delete Booking</a></button>
+      <?php
+      echo "<button type=\"submit\"><a href=\"../php/delete-booking.php?id=$booking_data[id]\" onclick='confirmDelete()'>Delete Booking</a></button>"
+      ?>
     </div>
   </main>
   <footer></footer>
 </body>
 <script src="../js/main.js"></script>
 <script>
-  const data = <?php echo $_GET['data'] ?>;
-  console.log(data);
+  function confirmDelete() {
+    if (confirm("Do you want to delete this booking?") == true) {
 
-  if (data == "view") {
-    document.querySelector(".delete").style.visibility = true;
-    document.querySelector(".confirm").style.visibility = false;
-  } else if (data == "new") {
-    document.querySelector(".delete").style.visibility = false;
-    document.querySelector(".confirm").style.visibility = true;
+    } else {
+      event.preventDefault();
+    }
+  }
+</script>
+<script>
+  const data =
+    <?php
+    if (isset($_GET['data'])) {
+      echo "\"$_GET[data]\"";
+    }
+    ?>
+
+  if (data == 1) {
+    document.querySelector(".delete").style.visibility = "visible";
+    document.querySelector(".confirm").style.visibility = "hidden";
+  }
+  if (data == 2) {
+    document.querySelector(".delete").style.visibility = "hidden";
+    document.querySelector(".confirm").style.visibility = "visible";
   }
 </script>
 

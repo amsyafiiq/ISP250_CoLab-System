@@ -24,6 +24,7 @@ $table = mysqli_fetch_array($result);
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta charset="utf-8" />
   <title>UiTM Raub CoLab Systme</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -31,7 +32,6 @@ $table = mysqli_fetch_array($result);
   <link rel="stylesheet" href="../fonts/stylesheet.css" />
   <link rel="stylesheet" href="../css/styles.css" />
   <link rel="stylesheet" href="../css/booking.css" />
-
 
 <body>
   <header>
@@ -74,6 +74,16 @@ $table = mysqli_fetch_array($result);
         <li><a href="about.php">ABOUT COLAB</a></li>
         <li><a href="help.php">HELP</a></li>
       </ul>
+      <div class="message">
+        <i class="fa fa-close" id="close" onclick="closeMessage()"></i>
+        <p>
+          <?php
+          if (isset($_GET['message'])) {
+            echo $_GET['message'];
+          }
+          ?>
+        </p>
+      </div>
     </div>
   </header>
   <main>
@@ -164,10 +174,33 @@ $table = mysqli_fetch_array($result);
     });
   });
 </script>
-<?php
-if (isset($_GET['message'])) {
-  echo "<script>alert('$_GET[message]')</script>";
-}
-?>
+<script>
+  if (typeof window.history.pushState == 'function') {
+    window.history.pushState({}, "Hide", '<?php echo $_SERVER['PHP_SELF']; ?>');
+  }
+</script>
+<script>
+  message = document.querySelector(".message");
+
+  function closeMessage() {
+    message.style.visibility = 'hidden';
+  }
+</script>
+<script>
+  var messages =
+    <?php
+    if (isset($_GET['message'])) {
+      echo "\"$_GET[message]\"";
+    } else {
+      echo -1;
+    }
+    ?>;
+  const messageBox = document.querySelector(".message");
+  if (messages == -1) {
+    messageBox.style.visibility = "hidden";
+  } else {
+    messageBox.style.visibility = "visible";
+  }
+</script>
 
 </html>

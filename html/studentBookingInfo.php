@@ -171,7 +171,7 @@ $booking_data = $_SESSION['booking_data'];
 <script src="../js/main.js"></script>
 <script>
   function confirmDelete() {
-    if (confirm("Do you want to delete the booking?") == true) {
+    if (confirm("Do you want to delete this booking?") == true) {
 
     } else {
       event.preventDefault();
@@ -179,7 +179,7 @@ $booking_data = $_SESSION['booking_data'];
   }
 </script>
 <script>
-  var data =
+  const data =
     <?php
     if (isset($_GET['data'])) {
       echo "\"$_GET[data]\"";

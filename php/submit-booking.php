@@ -20,12 +20,10 @@ if ($booking_data['comp'] == -1) {
 echo $sql;
 
 if (mysqli_query($conn, $sql)) {
-  echo "<script>alert('Data saved. Please check from time to time for the approval')</script>";
   $sql0 = "INSERT INTO `approval` (approve_ID, approve_Status, booking_ID)" .
   "VALUES ('$booking_data[id]', 'Pending Approval', '$booking_data[id]')";
-
   if(mysqli_query($conn, $sql0)) {
-    header("Location: ../html/booking.php?Booking Success. Please check from time to time for the approval");
+    header("Location: ../html/booking.php?message=BOOKING SUCCESSFULLY CREATED. PLEASE CHECK FROM TIME TO TIME FOR THE APPROVAL");
   }
   // header("Location: ../html/booking.php");
 } else {
