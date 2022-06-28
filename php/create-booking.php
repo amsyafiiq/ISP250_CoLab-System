@@ -16,7 +16,7 @@ function createID($conn) {
   $lastid = $row['booking_ID'];
   (int)$num = substr($lastid, 6);
   $num++;
-  if ($num <= 10) {
+  if ($num < 10) {
     $id = date("ymd", $max_date) . sprintf("00%d", $num);
   } else {
     $id = date("ymd", $max_date) . sprintf("0%d", $num);
@@ -32,17 +32,18 @@ if (isset($_POST['submit'])) {
     "bookedDate" => $_POST['booking-date'],
     "bookedTime" => $_POST['booking-time'],
     "lab" => $_POST['lab'],
-    "comp" => $_POST['computer']
+    "comp" => $_POST['computer'],
+    "create" => true
   );
 
   if ($_POST['submit'] == 1) {
     $booking_data += array("id-type" => "stud");
     $_SESSION['booking_data'] = $booking_data;
-    header("Location: ../html/studentBookinginfo.php");
+    header("Location: ../html/studentBookinginfo.php?data=2");
   } else {
     $booking_data += array("id-type" => "staff");
     $_SESSION['booking_data'] = $booking_data;
-    header("Location: ../html/staffBookinginfo.php");
+    header("Location: ../html/staffBookinginfo.php?data=2");
   }
 }
 

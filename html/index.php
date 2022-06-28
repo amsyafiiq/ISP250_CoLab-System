@@ -1,5 +1,6 @@
 <?php
 session_start();
+include "../php/db_conn.php";
 
 if (!isset($_SESSION['logged-in']) || $_SESSION['logged-in'] == false) {
   header("Location: login.php");
@@ -38,7 +39,6 @@ if (!isset($_SESSION['logged-in']) || $_SESSION['logged-in'] == false) {
           <ul class="nav-menu">
             <li><a href="index.php" class="nav-link">HOME</a></li>
             <li><a href="booking.php" class="nav-link">BOOKING</a></li>
-            <li><a href="report.php" class="nav-link">REPORT</a></li>
             <li><a href="about.php" class="nav-link about">ABOUT COLAB</a></li>
             <li><a href="help.php" class="nav-link help">HELP</a></li>
           </ul>
@@ -80,16 +80,35 @@ if (!isset($_SESSION['logged-in']) || $_SESSION['logged-in'] == false) {
       </p>
     </div>
     <div class="grid-container">
+      <?php
+      $sql0 = "select count(*) as total from vw_booking where studentno = $_SESSION[id]";
+      $result = mysqli_query($conn, $sql0);
+      $totalHistory = mysqli_fetch_assoc($result);
+
+      $sql0 = "select count(*) as total from vw_booking where approve_Status = 'Approved'";
+      $result = mysqli_query($conn, $sql0);
+      $approved = mysqli_fetch_assoc($result);
+
+      $sql0 = "select approve_Status from approval a join booking b on b.booking_ID = a.booking_ID where b.booking_TimeDate = (select max(b.booking_TimeDate) from booking b) AND studentno = $_SESSION[id]";
+      $result = mysqli_query($conn, $sql0);
+      if (mysqli_num_rows($result) === 1) {
+        $row = mysqli_fetch_assoc($result);
+        $latest = $row['approve_Status'];
+      } else {
+        $latest = "No Booking History Yet!";
+      }
+
+      ?>
       <div class="booking">
         <h4>Bookings</h4><br>
         <h5>Active Booking</h5>
         <p>1</p><br>
         <h5>Total Booking History</h5>
-        <p>1</p>
+        <p><?php echo $totalHistory['total'] ?></p>
       </div>
       <div class="approve">
         <h4>Approved</h4>
-        <p>1</p>
+        <p><?php echo $approved['total'] ?></p>
       </div>
       <div class="rejected">
         <h4>Rejected</h4>
@@ -97,7 +116,7 @@ if (!isset($_SESSION['logged-in']) || $_SESSION['logged-in'] == false) {
       </div>
       <div class="status">
         <h4>Status</h4>
-        <p>Pending</p>
+        <p><?php echo $latest?></p>
       </div>
       <div class="book-count">
         <h4>Booking Count</h4><br>

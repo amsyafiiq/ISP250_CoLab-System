@@ -58,13 +58,13 @@ select {
 
 button {
   font-family: pp_telegrafregular;
-  padding: 15px 0;
+  padding: 20px;
   border: none;
-  border-radius: 20px;
+  border-radius: 30px;
   position: fixed;
-  right: 45%;
-  left: 45%;
-  top: 80%;
+  left: 50%;
+  bottom: 15%;
+  transform: translate(-50%, -50%);
   cursor: pointer;
   background-color: #b1aacb;
   color: #fff;

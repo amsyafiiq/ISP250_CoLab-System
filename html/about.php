@@ -1,3 +1,12 @@
+<?php
+session_start();
+include "../php/db_conn.php";
+
+if (!isset($_SESSION['logged-in']) || $_SESSION['logged-in'] == false) {
+  header("Location: login.php");
+}
+?>
+
 <!DOCTYPE html>
 <html>
   <head>

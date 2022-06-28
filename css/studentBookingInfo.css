@@ -38,12 +38,21 @@ td {
   line-height: 1cm;
 }
 
-.confirm { 
-  display: flex;
-  width: 100%;
-  padding-top: 200px;
-  justify-content: center;
+.confirm, .delete { 
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  bottom: 15%;
 }
+
+.delete button {
+  background-color: #b52e28;
+}
+
+.delete button:hover {
+  background-color: #681a17;
+}
+
 
 button {
   background-color: #b1aacb;
