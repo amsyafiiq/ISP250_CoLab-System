@@ -30,7 +30,7 @@ if (mysqli_num_rows($result) === 1) {
       $_SESSION['id'] = $row['USER_ID'];
       $_SESSION['username'] = $row['USER_NAME'];
       $_SESSION['password'] = $row['USER_PASSWORD'];
-      $_SESSION['role'] = $row['ROLE_ID'];
+      $_SESSION['role'] = $row['Role_ID'];
       $_SESSION['logged-in'] = true;
       header("Location: ../html/index.php");
       exit();

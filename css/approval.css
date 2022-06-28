@@ -1,0 +1,23 @@
+.text-center {
+  text-align: center;
+}
+
+table.dataTable thead th {
+  text-align: center;
+}
+
+#approve {
+  background-color: green;
+}
+
+#approve:hover {
+  background-color: darkgreen;
+}
+
+#reject {
+  background-color: red;
+}
+
+#reject:hover {
+  background-color: maroon;
+}

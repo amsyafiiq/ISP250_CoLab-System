@@ -32,6 +32,7 @@ $table = mysqli_fetch_array($result);
   <link rel="stylesheet" href="../fonts/stylesheet.css" />
   <link rel="stylesheet" href="../css/styles.css" />
   <link rel="stylesheet" href="../css/booking.css" />
+  <link rel="stylesheet" href="../css/approval.css" />
 
 <body>
   <header>
@@ -103,53 +104,48 @@ $table = mysqli_fetch_array($result);
         <table id="table" class="table hover">
           <thead>
             <tr>
+              <th>Username</th>
               <th>Purpose</th>
               <th>Booked Date</th>
               <th>Booked Time</th>
               <th>Lab</th>
               <th>Computer</th>
               <th>Status</th>
-              <th></th>
+              <th>View</th>
+              <th>Approval</th>
             </tr>
           </thead>
           <tbody>
             <?php
-            if ($_SESSION['role'] == -1) {
-              $sql0 = "SELECT * FROM `vw_booking` WHERE `studentno` = $_SESSION[id]";
-              $result = mysqli_query($conn, $sql0);
+            $sql0 = "SELECT * FROM `vw_booking`";
+            $result = mysqli_query($conn, $sql0);
 
-              while ($row = mysqli_fetch_array($result)) {
-                $i = 0;
-                echo "<tr>";
-                echo "<td>$row[booking_Purpose]</td>";
-                echo "<td>$row[booking_UsageDate]</td>";
-                echo "<td>$row[booking_UsageTime]</td>";
-                echo "<td>$row[lab_Name]</td>";
-                echo "<td>$row[comp_ID]</td>";
-                echo "<td>$row[approve_Status]</td>";
-                echo "<td>
+            while ($row = mysqli_fetch_array($result)) {
+              
+              $i = 0;
+              echo "<tr>";
+              if (isset($row['studentno'])) {
+                $sql1 = "SELECT `studentname` FROM `vw_student_phg` WHERE `studentno` = '$row[studentno]'";
+                $result0 = mysqli_query($conn, $sql1);
+                $name_row = mysqli_fetch_assoc($result0);
+                echo "<td>$name_row[studentname]</td>";
+              } else {
+                $sql1 = "SELECT `USER_NAME` FROM `vw_staff_phg` WHERE `USER_ID` = '$row[USER_ID]'";
+                $result0 = mysqli_query($conn, $sql1);
+                $name_row = mysqli_fetch_assoc($result0);
+                echo "<td>$name_row[USER_NAME]</td>";
+              }
+              echo "<td>$row[booking_Purpose]</td>";
+              echo "<td>$row[booking_UsageDate]</td>";
+              echo "<td>$row[booking_UsageTime]</td>";
+              echo "<td>$row[lab_Name]</td>";
+              echo "<td>$row[comp_ID]</td>";
+              echo "<td>$row[approve_Status]</td>";
+              echo "<td>
                         <a id='button' href='../php/view-booking.php?id=$row[booking_ID]'>View</a>
                       </td>";
-                $i++;
-              }
-            } else {
-              $sql0 = "SELECT * FROM `vw_booking` WHERE `USER_ID` = $_SESSION[id]";
-              $result = mysqli_query($conn, $sql0);
-
-              while ($row = mysqli_fetch_array($result)) {
-                $i = 0;
-                echo "<tr>";
-                echo "<td>$row[booking_Purpose]</td>";
-                echo "<td>$row[booking_UsageDate]</td>";
-                echo "<td>$row[booking_UsageTime]</td>";
-                echo "<td>$row[lab_Name]</td>";
-                echo "<td>$row[comp_ID]</td>";
-                echo "<td>$row[approve_Status]</td>";
-                echo "<td>
-                        <a id='button' href='../php/view-booking.php?id=$row[booking_ID]'>View</a>
-                      </td>";
-                $i++;
-              }
+              $i++;
+              echo "<td><a href='../php/aprove.php' id='approve'>Approve</a><a href='../php/aprove.php' id='reject'>Reject</a></td>";
             }
             ?>
           </tbody>
@@ -179,6 +175,15 @@ $table = mysqli_fetch_array($result);
       "pagingType": "simple",
       "pageLength": 9,
       "lengthChange": false,
+      'columnDefs': [{
+          "targets": 6,
+          "className": "text-center"
+        },
+        {
+          "targets": 7,
+          "className": "text-center"
+        }
+      ]
     });
   });
 </script>

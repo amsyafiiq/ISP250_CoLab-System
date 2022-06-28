@@ -39,6 +39,14 @@ if (!isset($_SESSION['logged-in']) || $_SESSION['logged-in'] == false) {
           <ul class="nav-menu">
             <li><a href="index.php" class="nav-link">HOME</a></li>
             <li><a href="booking.php" class="nav-link">BOOKING</a></li>
+            <?php
+            if ($_SESSION['role'] == 1) {
+              echo "<li><a href='approval.php'>APPROVAL</a></li>";
+              echo "<li><a href='admin.php'>ADMINISTRATORS</a></li>";
+            } else if ($_SESSION['role'] == 2) {
+              echo "<li><a href='approval.php'>APPROVAL</a></li>";
+            }
+            ?>
             <li><a href="about.php" class="nav-link about">ABOUT COLAB</a></li>
             <li><a href="help.php" class="nav-link help">HELP</a></li>
           </ul>
@@ -89,15 +97,19 @@ if (!isset($_SESSION['logged-in']) || $_SESSION['logged-in'] == false) {
       $result = mysqli_query($conn, $sql0);
       $approved = mysqli_fetch_assoc($result);
 
-      $sql0 = "select approve_Status from approval a join booking b on b.booking_ID = a.booking_ID where b.booking_TimeDate = (select max(b.booking_TimeDate) from booking b) AND studentno = $_SESSION[id]";
+      if ($_SESSION['role'] == -1) {
+        $id_type =  "studentno";
+      } else {
+        $id_type = "USER_ID";
+      }
+      $sql0 = "select approve_Status from approval a join booking b on b.booking_ID = a.booking_ID where b.booking_TimeDate = (select max(b.booking_TimeDate) from booking b WHERE `$id_type` = $_SESSION[id])";
       $result = mysqli_query($conn, $sql0);
-      if (mysqli_num_rows($result) === 1) {
+      if (mysqli_num_rows($result) >= 1) {
         $row = mysqli_fetch_assoc($result);
         $latest = $row['approve_Status'];
       } else {
         $latest = "No Booking History Yet!";
       }
-
       ?>
       <div class="booking">
         <h4>Bookings</h4><br>
@@ -116,7 +128,7 @@ if (!isset($_SESSION['logged-in']) || $_SESSION['logged-in'] == false) {
       </div>
       <div class="status">
         <h4>Status</h4>
-        <p><?php echo $latest?></p>
+        <p><?php echo $latest ?></p>
       </div>
       <div class="book-count">
         <h4>Booking Count</h4><br>
