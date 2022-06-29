@@ -97,55 +97,33 @@ $table = mysqli_fetch_array($result);
   </header>
   <main>
     <div class="title-container">
-      <p>APPROVAL</p>
+      <p>ADMINISTRATORS</p>
     </div>
     <div class="main-page">
       <div class="table-container">
         <table id="table" class="table hover">
           <thead>
             <tr>
-              <th>Username</th>
-              <th>Purpose</th>
-              <th>Booked Date</th>
-              <th>Booked Time</th>
-              <th>Lab</th>
-              <th>Computer</th>
-              <th>Status</th>
-              <th>View</th>
-              <th>Approval</th>
+              <th>Staff ID</th>
+              <th>Staff Name</th>
+              <th>Staff Email</th>
+              <th>Jabatan</th>
+              <th>Role</th>
             </tr>
           </thead>
           <tbody>
             <?php
-            $sql0 = "SELECT * FROM `vw_booking`";
-            $result = mysqli_query($conn, $sql0);
+            $sql1 = "SELECT * FROM `vw_staff_phg` ORDER BY `Role_ID`";
+            $result = mysqli_query($conn, $sql1);
 
             while ($row = mysqli_fetch_array($result)) {
-
-              $i = 0;
               echo "<tr>";
-              if (isset($row['studentno'])) {
-                $sql1 = "SELECT `studentname` FROM `vw_student_phg` WHERE `studentno` = '$row[studentno]'";
-                $result0 = mysqli_query($conn, $sql1);
-                $name_row = mysqli_fetch_assoc($result0);
-                echo "<td>$name_row[studentname]</td>";
-              } else {
-                $sql1 = "SELECT `USER_NAME` FROM `vw_staff_phg` WHERE `USER_ID` = '$row[USER_ID]'";
-                $result0 = mysqli_query($conn, $sql1);
-                $name_row = mysqli_fetch_assoc($result0);
-                echo "<td>$name_row[USER_NAME]</td>";
-              }
-              echo "<td>$row[booking_Purpose]</td>";
-              echo "<td>$row[booking_UsageDate]</td>";
-              echo "<td>$row[booking_UsageTime]</td>";
-              echo "<td>$row[lab_Name]</td>";
-              echo "<td>$row[comp_ID]</td>";
-              echo "<td>$row[approve_Status]</td>";
-              echo "<td>
-                        <a id='button' href='../php/view-booking.php?id=$row[booking_ID]'>View</a>
-                      </td>";
-              $i++;
-              echo "<td><a href='../php/approve.php?id=$row[booking_ID]' id='approve' onclick='approveClick()'>Approve</a><a href='../php/reject.phpid=$row[booking_ID]' id='reject' onclick='rejectClick()'>Reject</a></td>";
+
+              echo "<td>$row[USER_ID]</td>";
+              echo "<td>$row[USER_NAME]</td>";
+              echo "<td>$row[USER_EMAIL]</td>";
+              echo "<td>$row[JABATAN]</td>";
+              echo "<td>$row[Role_ID]</td>";
             }
             ?>
           </tbody>
@@ -170,19 +148,7 @@ $table = mysqli_fetch_array($result);
       "pagingType": "simple",
       "pageLength": 7,
       "lengthChange": false,
-      'columnDefs': [{
-          "targets": 5,
-          "className": "approve_status"
-        },
-        {
-          "targets": 6,
-          "className": "text-center"
-        },
-        {
-          "targets": 7,
-          "className": "text-center"
-        }
-      ]
+      "order": [4, "desc"]
     });
   });
 </script>
