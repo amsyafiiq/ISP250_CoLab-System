@@ -70,10 +70,9 @@ label {
 }
 
 .button-container {
-  position: fixed;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  bottom: 15%;
+  display: flex;
+  justify-content: center;
+  margin-top: 70px;
 }
 
 .button-container a {
@@ -130,4 +129,8 @@ table a:hover {
 
 .message i:hover {
   cursor: pointer;
+}
+
+table.dataTable tbody th, table.dataTable tbody td {
+    padding: 16px 20px;
 }

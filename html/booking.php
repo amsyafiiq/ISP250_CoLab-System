@@ -177,7 +177,7 @@ $table = mysqli_fetch_array($result);
   $(document).ready(function() {
     $('#table.table').DataTable({
       "pagingType": "simple",
-      "pageLength": 9,
+      "pageLength": 7,
       "lengthChange": false,
     });
   });

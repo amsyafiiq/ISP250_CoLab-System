@@ -13,13 +13,20 @@ function createID($conn) {
     echo mysqli_error($conn);
   }
 
-  $lastid = $row['booking_ID'];
-  (int)$num = substr($lastid, 6);
-  $num++;
-  if ($num < 10) {
-    $id = date("ymd", $max_date) . sprintf("00%d", $num);
+  $currDate = date("ymd");
+  $max = date("ymd", $max_date);
+
+  if ($currDate == $max) {
+    $lastid = $row['booking_ID'];
+    (int)$num = substr($lastid, 6);
+    $num++;
+    if ($num < 10) {
+      $id = date("ymd", $max_date) . sprintf("00%d", $num);
+    } else {
+      $id = date("ymd", $max_date) . sprintf("0%d", $num);
+    }
   } else {
-    $id = date("ymd", $max_date) . sprintf("0%d", $num);
+    $id = date("ymd") . "001";
   }
   return $id;
 }

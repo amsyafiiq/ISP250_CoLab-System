@@ -21,3 +21,7 @@ table.dataTable thead th {
 #reject:hover {
   background-color: maroon;
 }
+
+table.dataTable tbody th, table.dataTable tbody td {
+    padding: 16px 20px;
+}
