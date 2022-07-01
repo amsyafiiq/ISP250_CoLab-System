@@ -1,0 +1,53 @@
+#actions {
+  display: block;
+}
+
+table.dataTable thead th {
+  text-align: center;
+}
+
+table.dataTable tbody td {
+  text-align: center;
+}
+
+/* table.dataTable tbody th, table.dataTable tbody td {
+    padding: 16px 20px;
+} */
+
+.approve_status {
+  display: block;
+}
+
+.table-container {
+  margin-bottom: 100px;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current,
+.dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+  color: #fff !important;
+}
+
+.table-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+#table_wrapper {
+  width: 90%;
+  /* background-color: #cacaca; */
+}
+
+table a {
+  background-color: #b1accb;
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+  transition: all 200ms ease-out;
+  margin: 0px;
+}
+
+table a:hover {
+  background-color: #6e697e;
+  cursor: pointer;
+}

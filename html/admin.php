@@ -32,7 +32,7 @@ $table = mysqli_fetch_array($result);
   <link rel="stylesheet" href="../fonts/stylesheet.css" />
   <link rel="stylesheet" href="../css/styles.css" />
   <link rel="stylesheet" href="../css/booking.css" />
-  <link rel="stylesheet" href="../css/approval.css" />
+  <link rel="stylesheet" href="../css/admin.css" />
 
 <body>
   <header>
@@ -109,6 +109,7 @@ $table = mysqli_fetch_array($result);
               <th>Staff Email</th>
               <th>Jabatan</th>
               <th>Role</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
@@ -124,6 +125,13 @@ $table = mysqli_fetch_array($result);
               echo "<td>$row[USER_EMAIL]</td>";
               echo "<td>$row[JABATAN]</td>";
               echo "<td>$row[Role_ID]</td>";
+            ?>
+              <td id="action">
+                <?php echo "<a href=\"../php/setAdmin.php?role=1&id=$row[USER_ID]\">Admin</a>" ?>
+                <?php echo "<a href=\"../php/setAdmin.php?role=2&id=$row[USER_ID]\">Approver</a>" ?>
+                <?php echo "<a href=\"../php/setAdmin.php?role=3&id=$row[USER_ID]\">Remove Role</a>" ?>
+              </td>
+            <?php
             }
             ?>
           </tbody>
@@ -145,10 +153,13 @@ $table = mysqli_fetch_array($result);
 <script>
   $(document).ready(function() {
     $('#table.table').DataTable({
-      "pagingType": "simple",
-      "pageLength": 7,
+      "pageLength": 10,
       "lengthChange": false,
-      "order": [4, "desc"]
+      "order": [4, "desc"],
+      'columnDefs': [{
+        "targets": 5,
+        "className": "approve_status"
+      }]
     });
   });
 </script>
