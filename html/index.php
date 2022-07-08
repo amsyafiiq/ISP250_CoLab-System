@@ -89,20 +89,12 @@ if (!isset($_SESSION['logged-in']) || $_SESSION['logged-in'] == false) {
     </div>
     <div class="grid-container">
       <?php
-      $sql0 = "select count(*) as total from vw_booking where studentno = $_SESSION[id]";
-      $result = mysqli_query($conn, $sql0);
-      $totalHistory = mysqli_fetch_assoc($result);
-
-      $sql0 = "select count(*) as total from vw_booking where approve_Status = 'Approved'";
-      $result = mysqli_query($conn, $sql0);
-      $approved = mysqli_fetch_assoc($result);
-
       if ($_SESSION['role'] == -1) {
         $id_type =  "studentno";
       } else {
         $id_type = "USER_ID";
       }
-      $sql0 = "select approve_Status from approval a join booking b on b.booking_ID = a.booking_ID where b.booking_TimeDate = (select max(b.booking_TimeDate) from booking b WHERE `$id_type` = $_SESSION[id])";
+      $sql0 = "SELECT * FROM `vw_booking` WHERE booking_UsageDate = (select max(booking_UsageDate) from booking WHERE `$id_type` = $_SESSION[id])";
       $result = mysqli_query($conn, $sql0);
       if (mysqli_num_rows($result) >= 1) {
         $row = mysqli_fetch_assoc($result);
@@ -110,21 +102,51 @@ if (!isset($_SESSION['logged-in']) || $_SESSION['logged-in'] == false) {
       } else {
         $latest = "No Booking History Yet!";
       }
+
+      $today = date("Y-m-d");
+      $sql = "SELECT count(*) as active FROM `vw_booking` WHERE `$id_type` = $_SESSION[id] AND date(booking_UsageDate) >= CURDATE()";
+      $result = mysqli_query($conn, $sql);
+      $row = mysqli_fetch_assoc($result);
+      $active = $row['active'];
+
+      $sql = "SELECT count(*) as approved FROM `vw_booking` WHERE `$id_type` = $_SESSION[id] AND approve_Status = 'Approved'";
+      $result = mysqli_query($conn, $sql);
+      $approved = mysqli_fetch_assoc($result);
+
+      $sql = "SELECT count(*) as rejected FROM `vw_booking` WHERE `$id_type` = $_SESSION[id] AND approve_Status = 'Rejected'";
+      $result = mysqli_query($conn, $sql);
+      $rejected = mysqli_fetch_assoc($result);
+
+      $sql = "SELECT count(*) as history FROM `vw_booking` WHERE `$id_type` = $_SESSION[id]";
+      $result = mysqli_query($conn, $sql);
+      $history = mysqli_fetch_assoc($result);
+
+      $sql = "SELECT count(*) as total FROM `vw_booking` WHERE date(booking_UsageDate) = CURDATE()";
+      $result = mysqli_query($conn, $sql);
+      $today = mysqli_fetch_assoc($result);
+
+      $sql = "SELECT count(*) as total FROM `vw_booking` WHERE YEARWEEK(booking_UsageDate) = YEARWEEK(NOW())";
+      $result = mysqli_query($conn, $sql);
+      $week = mysqli_fetch_assoc($result);
+
+      $sql = "SELECT count(*) as total FROM `vw_booking` WHERE MONTH(booking_UsageDate) = MONTH(NOW())";
+      $result = mysqli_query($conn, $sql);
+      $month = mysqli_fetch_assoc($result);
       ?>
       <div class="booking">
         <h4>Bookings</h4><br>
         <h5>Active Booking</h5>
-        <p>1</p><br>
+        <p><?php echo $active ?></p><br>
         <h5>Total Booking History</h5>
-        <p><?php echo $totalHistory['total'] ?></p>
+        <p><?php echo $history['history'] ?></p>
       </div>
       <div class="approve">
         <h4>Approved</h4>
-        <p><?php echo $approved['total'] ?></p>
+        <p><?php echo $approved['approved'] ?></p><br>
       </div>
       <div class="rejected">
         <h4>Rejected</h4>
-        <p>1</p>
+        <p><?php echo $rejected['rejected'] ?></p><br>
       </div>
       <div class="status">
         <h4>Status</h4>
@@ -135,15 +157,15 @@ if (!isset($_SESSION['logged-in']) || $_SESSION['logged-in'] == false) {
         <span class="count-container">
           <span class="today">
             <h5>Today</h5>
-            <p>1</p>
+            <p> <?php echo $today['total'] ?> </p>
           </span>
           <span class="this-month">
             <h5>This Month</h5>
-            <p>1</p>
+            <p> <?php echo $month['total'] ?> </p>
           </span>
           <span class="this-week">
             <h5>This Week</h5>
-            <p>1</p>
+            <p> <?php echo $week['total'] ?> </p>
           </span>
         </span>
       </div>

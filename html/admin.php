@@ -154,7 +154,7 @@ $table = mysqli_fetch_array($result);
   $(document).ready(function() {
     $('#table.table').DataTable({
       "pageLength": 10,
-      "lengthChange": false,
+      "lengthChange": falsexa,
       "order": [4, "desc"],
       'columnDefs': [{
         "targets": 5,

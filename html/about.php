@@ -16,7 +16,7 @@ if (!isset($_SESSION['logged-in']) || $_SESSION['logged-in'] == false) {
   <title>UiTM Raub CoLab System</title>
   <link rel="stylesheet" href="../fonts/stylesheet.css" />
   <link rel="stylesheet" href="../css/styles.css" />
-  <link rel="stylesheet" href="/css/about.css" />
+  <link rel="stylesheet" href="../css/about.css" />
 </head>
 
 <body>
@@ -76,8 +76,7 @@ if (!isset($_SESSION['logged-in']) || $_SESSION['logged-in'] == false) {
     </div>
     <div class="main-page">
       <div>
-        <p class="abt-h1">COLAB RAUB System</p>
-        <br>
+        <h3>CoLab Raub System</h3><br>
         <p class="abt-h2">Computer Lab System (COLAB System) for UiTM Raub was built since 2022 by a group of CS110 students for their ISP250 Final Project.
           <br>This project aims to give an aid for all UiTM Raub user especially in this infostructure section to give the the best services of computer lab
           <br>that this campus have ever had. However, this system is still in progress and needs more observations from time to time to keep it updated as soon as possible

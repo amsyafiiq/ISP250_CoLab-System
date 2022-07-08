@@ -1,0 +1,16 @@
+h3 {
+  color: #fff;
+  font-size: 24px;
+}
+
+p {
+  color: #fff;
+  font-size: 18px;
+}
+
+.main-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 400px);
+}
