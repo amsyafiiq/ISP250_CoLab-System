@@ -34,10 +34,10 @@ header {
   padding: 0 10px 0 10px;
 }
 
-  .left-container img {
-    width: 30px;
-    cursor: pointer;
-  }
+.left-container img {
+  width: 30px;
+  cursor: pointer;
+}
 
 .bar {
   display: block;
@@ -169,4 +169,20 @@ main {
   font-size: 20px;
   border-radius: 10px;
   background-color: #191742;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.nav-menu a {
+  transition: all 200ms ease-out;
+}
+
+.nav-menu a:hover {
+  background-color: #6e697e;
+}
+
+.navbar {
+  border: none;
 }

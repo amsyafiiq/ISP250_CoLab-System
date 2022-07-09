@@ -24,14 +24,15 @@ $table = mysqli_fetch_array($result);
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta charset="utf-8" />
   <title>UiTM Raub CoLab Systme</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" />
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
   <script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
   <link rel="stylesheet" href="../fonts/stylesheet.css" />
   <link rel="stylesheet" href="../css/styles.css" />
-  <link rel="stylesheet" href="../css/booking.css" />
   <link rel="stylesheet" href="../css/approval.css" />
 
 <body>
@@ -49,14 +50,14 @@ $table = mysqli_fetch_array($result);
             <p>UiTM RAUB Co Lab</p>
           </div>
           <ul class="nav-menu">
-            <li><a href="index.php" class="nav-link">HOME</a></li>
-            <li><a href="booking.php" class="nav-link">BOOKING</a></li>
+            <li><a href="index.php" class="nav-link home">HOME</a></li>
+            <li><a href="booking.php" class="nav-link booking">BOOKING</a></li>
             <?php
             if ($_SESSION['role'] == 1) {
-              echo "<li><a href='approval.php'>APPROVAL</a></li>";
-              echo "<li><a href='admin.php'>ADMINISTRATORS</a></li>";
+              echo "<li><a href='approval.php' class='nav-link approval'>APPROVAL</a></li>";
+              echo "<li><a href='admin.php' class='nav-link admin'>ADMINISTRATORS</a></li>";
             } else if ($_SESSION['role'] == 2) {
-              echo "<li><a href='approval.php'>APPROVAL</a></li>";
+              echo "<li><a href='approval.php' class='nav-link approval'>APPROVAL</a></li>";
             }
             ?>
             <li><a href="about.php" class="nav-link about">ABOUT COLAB</a></li>
@@ -145,7 +146,14 @@ $table = mysqli_fetch_array($result);
                         <a id='button' href='../php/view-booking.php?id=$row[booking_ID]'>View</a>
                       </td>";
               $i++;
-              echo "<td><a href='../php/approve.php?id=$row[booking_ID]' id='approve' onclick='approveClick()'>Approve</a><a href='../php/reject.phpid=$row[booking_ID]' id='reject' onclick='rejectClick()'>Reject</a></td>";
+              echo "<td>
+                      <a href='../php/approve.php?id=$row[booking_ID]' id='approve' onclick='approveClick()'>
+                        <span class=\"glyphicon glyphicon-ok\"></span>
+                      </a>
+                      <a href='../php/reject.phpid=$row[booking_ID]' id='reject' onclick='rejectClick()'>
+                      <span class=\"glyphicon glyphicon-remove\"></span>
+                      </a>
+                    </td>";
             }
             ?>
           </tbody>

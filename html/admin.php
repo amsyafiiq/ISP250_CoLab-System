@@ -49,14 +49,14 @@ $table = mysqli_fetch_array($result);
             <p>UiTM RAUB Co Lab</p>
           </div>
           <ul class="nav-menu">
-            <li><a href="index.php" class="nav-link">HOME</a></li>
-            <li><a href="booking.php" class="nav-link">BOOKING</a></li>
+            <li><a href="index.php" class="nav-link home">HOME</a></li>
+            <li><a href="booking.php" class="nav-link booking">BOOKING</a></li>
             <?php
             if ($_SESSION['role'] == 1) {
-              echo "<li><a href='approval.php'>APPROVAL</a></li>";
-              echo "<li><a href='admin.php'>ADMINISTRATORS</a></li>";
+              echo "<li><a href='approval.php' class='nav-link approval'>APPROVAL</a></li>";
+              echo "<li><a href='admin.php' class='nav-link admin'>ADMINISTRATORS</a></li>";
             } else if ($_SESSION['role'] == 2) {
-              echo "<li><a href='approval.php'>APPROVAL</a></li>";
+              echo "<li><a href='approval.php' class='nav-link approval'>APPROVAL</a></li>";
             }
             ?>
             <li><a href="about.php" class="nav-link about">ABOUT COLAB</a></li>
@@ -154,7 +154,7 @@ $table = mysqli_fetch_array($result);
   $(document).ready(function() {
     $('#table.table').DataTable({
       "pageLength": 10,
-      "lengthChange": falsexa,
+      "lengthChange": false,
       "order": [4, "desc"],
       'columnDefs': [{
         "targets": 5,
