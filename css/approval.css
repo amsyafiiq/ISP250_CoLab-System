@@ -166,3 +166,7 @@ table a:hover {
 table.dataTable tbody th, table.dataTable tbody td {
     padding: 16px 20px;
 }
+
+.glyphicon:after {
+  color: #fff;
+}
