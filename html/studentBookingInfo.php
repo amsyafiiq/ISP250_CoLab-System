@@ -14,7 +14,7 @@ $booking_data = $_SESSION['booking_data'];
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta charset="utf-8" />
-  <title>UiTM Raub CoLab Systme</title>
+  <title>UiTM Raub CoLab System</title>
   <link rel="stylesheet" href="../fonts/stylesheet.css" />
   <link rel="stylesheet" href="../css/styles.css" />
   <link rel="stylesheet" href="../css/studentBookingInfo.css" />
@@ -170,7 +170,7 @@ $booking_data = $_SESSION['booking_data'];
     </div>
     <div class="delete">
       <?php
-      echo "<button type=\"submit\"><a href=\"../php/delete-booking.php?id=$booking_data[id]\" onclick='confirmDelete()'>Delete Booking</a></button>"
+      echo "<button type=\"submit\"><a href=\"../php/delete-booking.php?id=$booking_data[id]\" onclick='confirmDelete()'>Cancel Booking</a></button>"
       ?>
     </div>
   </main>
@@ -179,7 +179,7 @@ $booking_data = $_SESSION['booking_data'];
 <script src="../js/main.js"></script>
 <script>
   function confirmDelete() {
-    if (confirm("Do you want to delete this booking?") == true) {
+    if (confirm("Do you want to cancel this booking?") == true) {
 
     } else {
       event.preventDefault();

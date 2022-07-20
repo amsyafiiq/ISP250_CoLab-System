@@ -13,7 +13,7 @@ if (!isset($_SESSION['logged-in']) || $_SESSION['logged-in'] == false) {
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta charset="utf-8" />
-  <title>UiTM Raub CoLab Systme</title>
+  <title>UiTM Raub CoLab System</title>
   <link rel="stylesheet" href="../fonts/stylesheet.css" />
   <link rel="stylesheet" href="../css/styles.css" />
   <link rel="stylesheet" href="../css/index-styles.css" />
@@ -94,11 +94,11 @@ if (!isset($_SESSION['logged-in']) || $_SESSION['logged-in'] == false) {
       } else {
         $id_type = "USER_ID";
       }
-      $sql0 = "SELECT * FROM `vw_booking` WHERE booking_UsageDate = (select max(booking_UsageDate) from booking WHERE `$id_type` = $_SESSION[id])";
+      $sql0 = "SELECT * FROM `vw_booking` WHERE booking_TimeDate = (select max(booking_TimeDate) from booking WHERE `$id_type` = $_SESSION[id])";
       $result = mysqli_query($conn, $sql0);
       if (mysqli_num_rows($result) >= 1) {
         $row = mysqli_fetch_assoc($result);
-        $latest = $row['approve_Status'];
+        $latest = $row['approve_Status'] . " (" . $row['booking_Purpose'] . ", ". $row['booking_UsageDate'] . " " . $row['booking_UsageTime'] . ")";
       } else {
         $latest = "No Booking History Yet!";
       }

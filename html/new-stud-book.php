@@ -13,7 +13,7 @@ if (!isset($_SESSION['logged-in']) || $_SESSION['logged-in'] == false) {
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta charset="utf-8" />
-  <title>UiTM Raub CoLab Systme</title>
+  <title>UiTM Raub CoLab System</title>
   <link rel="stylesheet" href="../fonts/stylesheet.css" />
   <link rel="stylesheet" href="../css/styles.css" />
   <link rel="stylesheet" href="../css/new-stud-book.css" />

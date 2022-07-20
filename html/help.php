@@ -80,16 +80,16 @@ if (!isset($_SESSION['logged-in']) || $_SESSION['logged-in'] == false) {
       </div>
       <div class="pic-container">
         <span>
-          <pre>First PiC : +(60)11 - 63341282</pre>
-          <pre id="pic-name">(Anis Safiyyah)</pre>
+          <pre>First PiC : +(60)9 - 3515209</pre>
+          <pre id="pic-name">(Puan Noorasikin Binti Mustapa)</pre>
         </span>
         <span>
-          <pre>First PiC : +(60)11 - 10380118</pre>
-          <pre id="pic-name">(Nurin Ewani)</pre>
+          <pre>First PiC : +(60)9 - 3515207</pre>
+          <pre id="pic-name">(En. Muhammad Azri Bin Yusoff)</pre>
         </span>
         <span>
-          <pre>First PiC : +(60)17 - 6702535</pre>
-          <pre id="pic-name">(Amirul Syafiq)</pre>
+          <pre>First PiC : +(60)9 - 3515211</pre>
+          <pre id="pic-name">(Encik Jefreyzan Muhlan)</pre>
         </span>
       </div>
     </div>

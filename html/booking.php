@@ -23,7 +23,7 @@ $table = mysqli_fetch_array($result);
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta charset="utf-8" />
-  <title>UiTM Raub CoLab Systme</title>
+  <title>UiTM Raub CoLab System</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -156,6 +156,11 @@ $table = mysqli_fetch_array($result);
         </table>
       </div>
       <div>
+        <button type="button">Approved</button>
+        <button type="button">Pending</button>
+        <button type="button">Canceled</button>
+      </div>
+      <div>
         <div class="button-container">
           <a href="#" id="new-booking">New Booking</a>
         </div>
@@ -176,9 +181,9 @@ $table = mysqli_fetch_array($result);
 <script>
   $(document).ready(function() {
     $('#table.table').DataTable({
-      "pagingType": "simple",
-      "pageLength": 7,
-      "lengthChange": false,
+      pagingType: "simple",
+      pageLength: 7,
+      lengthChange: false
     });
   });
 </script>
