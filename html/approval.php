@@ -26,11 +26,13 @@ $table = mysqli_fetch_array($result);
   <title>UiTM Raub CoLab System</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.2.3/css/buttons.dataTables.min.css" />
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" />
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
   <script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js"></script>
   <link rel="stylesheet" href="../fonts/stylesheet.css" />
   <link rel="stylesheet" href="../css/styles.css" />
   <link rel="stylesheet" href="../css/approval.css" />
@@ -118,7 +120,7 @@ $table = mysqli_fetch_array($result);
           </thead>
           <tbody>
             <?php
-            $sql0 = "SELECT * FROM `vw_booking`";
+            $sql0 = "SELECT * FROM `vw_booking` ORDER BY booking_TimeDate DESC";
             $result = mysqli_query($conn, $sql0);
 
             while ($row = mysqli_fetch_array($result)) {
@@ -177,8 +179,13 @@ $table = mysqli_fetch_array($result);
     $('#table.table').DataTable({
       "pagingType": "simple",
       "pageLength": 7,
-      "lengthChange": false,
+      "order": [],
+      dom: '<"ddl-container">frtip',
       'columnDefs': [{
+          'targets': [0, 1, 2, 3, 4, 5, 6, 7, 8],
+          'orderable': false,
+        },
+        {
           "targets": 5,
           "className": "approve_status"
         },
@@ -190,7 +197,13 @@ $table = mysqli_fetch_array($result);
           "targets": 7,
           "className": "text-center"
         }
-      ]
+      ],
+    });
+    $("#table.table").DataTable().column(6).search("Pending").draw();
+    $('div.ddl-container').html("<select id='ddl-filter' class='form-control'><option value='Pending'>Pending</option><option value='Approved'>Approved</option><option value='Rejected'>Rejected</option><option value='Canceled'>Canceled</option></select>");
+    $('#ddl-filter').on('change', function() {
+      var filterValue = this.value;
+      $('#table.table').DataTable().column(6).search(filterValue).draw();
     });
   });
 </script>

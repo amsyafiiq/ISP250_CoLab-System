@@ -109,12 +109,12 @@ $table = mysqli_fetch_array($result);
               <th>Staff Email</th>
               <th>Jabatan</th>
               <th>Role</th>
-              <th>Action</th>
+              <th>Update Role</th>
             </tr>
           </thead>
           <tbody>
             <?php
-            $sql1 = "SELECT * FROM `vw_staff_phg` ORDER BY `Role_ID`";
+            $sql1 = "SELECT * FROM `vw_staff_phg`";
             $result = mysqli_query($conn, $sql1);
 
             while ($row = mysqli_fetch_array($result)) {
@@ -124,7 +124,12 @@ $table = mysqli_fetch_array($result);
               echo "<td>$row[USER_NAME]</td>";
               echo "<td>$row[USER_EMAIL]</td>";
               echo "<td>$row[JABATAN]</td>";
-              echo "<td>$row[Role_ID]</td>";
+
+              if ($row['Role_Type'] == "") {
+                echo "<td>User</td>";
+              } else {
+                echo "<td>$row[Role_Type]</td>";
+              }
             ?>
               <td id="action">
                 <?php echo "<a href=\"../php/setAdmin.php?role=1&id=$row[USER_ID]\">Admin</a>" ?>
@@ -155,11 +160,21 @@ $table = mysqli_fetch_array($result);
     $('#table.table').DataTable({
       "pageLength": 10,
       "lengthChange": false,
-      "order": [4, "desc"],
+      "order": [1, "asc"],
       'columnDefs': [{
         "targets": 5,
         "className": "approve_status"
-      }]
+      }],
+      dom: '<"ddl-container">frtip'
+    });
+    $('div.ddl-container').html("<select id='ddl-filter' class='form-control'><option value='All'>All</option><option value='Admin'>Admin</option><option value='Approver'>Approver</option><option value='User'>User</option></select>");
+    $('#ddl-filter').on('change', function() {
+      var filterValue = this.value;
+      if (filterValue == 'All') {
+        $('#table.table').DataTable().column(4).search('').draw();
+      } else {
+        $('#table.table').DataTable().column(4).search(filterValue).draw();
+      }
     });
   });
 </script>

@@ -170,3 +170,34 @@ table.dataTable tbody th, table.dataTable tbody td {
 .glyphicon:after {
   color: #fff;
 }
+
+.ddl-container {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+}
+
+.ddl-container select {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  margin-top: 0.6em;
+  margin-left: 0.167em;
+  margin-right: 0.167em;
+  margin-bottom: 0.333em;
+  padding: 0.5em 1em;
+  cursor: pointer;
+  font-size: 0.88em;
+  line-height: 1.6em;
+  color: black;
+  white-space: nowrap;
+  overflow: hidden;
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr="rgba(230, 230, 230, 0.1)", EndColorStr="rgba(0, 0, 0, 0.1)");
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-decoration: none;
+  outline: none;
+  text-overflow: ellipsis;
+}

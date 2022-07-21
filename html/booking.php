@@ -117,7 +117,7 @@ $table = mysqli_fetch_array($result);
           <tbody>
             <?php
             if ($_SESSION['role'] == -1) {
-              $sql0 = "SELECT * FROM `vw_booking` WHERE `studentno` = $_SESSION[id]";
+              $sql0 = "SELECT * FROM `vw_booking` WHERE `studentno` = $_SESSION[id] ORDER BY booking_TimeDate DESC";
               $result = mysqli_query($conn, $sql0);
 
               while ($row = mysqli_fetch_array($result)) {
@@ -180,13 +180,18 @@ $table = mysqli_fetch_array($result);
     $('#table.table').DataTable({
       pagingType: "simple",
       pageLength: 7,
-      dom: 'Bftrip',
-      buttons: [{
-        text: "Approved",
-        action: function(e, dt, node, config) {
-          alert("Hello");
-        }
-      }]
+      order: [],
+      'columnDefs': [{
+        'targets': [0, 1, 2, 3, 4, 5, 6],
+        'orderable': false
+      }],
+      dom: '<"ddl-container">frtip',
+    });
+    $("#table.table").DataTable().column(5).search("Approved").draw();
+    $('div.ddl-container').html("<select id='ddl-filter' class='form-control'><option value='Approved'>Approved</option><option value='Pending'>Pending</option><option value='Rejected'>Rejected</option><option value='Canceled'>Canceled</option></select>");
+    $('#ddl-filter').on('change', function() {
+      var filterValue = this.value;
+      $('#table.table').DataTable().column(5).search(filterValue).draw();
     });
   });
 </script>
