@@ -131,6 +131,37 @@ table a:hover {
   cursor: pointer;
 }
 
-table.dataTable tbody th, table.dataTable tbody td {
-    padding: 16px 20px;
+table.dataTable tbody th,
+table.dataTable tbody td {
+  padding: 16px 20px;
+}
+
+.filter-container {
+  margin-top: 10px;
+  position: absolute;
+  left: 12.5%;
+}
+
+.filter-container button {
+  background-color: #b1accb;
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+  transition: all 200ms ease-out;
+  color: #fff;
+}
+
+.filter-container button:hover {
+  background-color: #6e697e;
+  cursor: pointer;
+}
+
+button.dt-button {
+  color: #fff;
+  background: none;
+  background-color: #b1accb;
+}
+
+button.dt-button:hover:not(.disabled) {
+  background-color: #6e697e;
 }

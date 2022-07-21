@@ -25,10 +25,12 @@ $table = mysqli_fetch_array($result);
   <meta charset="utf-8" />
   <title>UiTM Raub CoLab System</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.2.3/css/buttons.dataTables.min.css" />
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
   <script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js"></script>
   <link rel="stylesheet" href="../fonts/stylesheet.css" />
   <link rel="stylesheet" href="../css/styles.css" />
   <link rel="stylesheet" href="../css/booking.css" />
@@ -156,11 +158,6 @@ $table = mysqli_fetch_array($result);
         </table>
       </div>
       <div>
-        <button type="button">Approved</button>
-        <button type="button">Pending</button>
-        <button type="button">Canceled</button>
-      </div>
-      <div>
         <div class="button-container">
           <a href="#" id="new-booking">New Booking</a>
         </div>
@@ -183,7 +180,13 @@ $table = mysqli_fetch_array($result);
     $('#table.table').DataTable({
       pagingType: "simple",
       pageLength: 7,
-      lengthChange: false
+      dom: 'Bftrip',
+      buttons: [{
+        text: "Approved",
+        action: function(e, dt, node, config) {
+          alert("Hello");
+        }
+      }]
     });
   });
 </script>
