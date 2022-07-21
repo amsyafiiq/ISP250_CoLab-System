@@ -163,5 +163,6 @@ button.dt-button {
 }
 
 button.dt-button:hover:not(.disabled) {
+  background: none;
   background-color: #6e697e;
 }
