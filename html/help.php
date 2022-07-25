@@ -40,7 +40,7 @@ if (!isset($_SESSION['logged-in']) || $_SESSION['logged-in'] == false) {
             if ($_SESSION['role'] == 1) {
               echo "<li><a href='approval.php' class='nav-link approval'>APPROVAL</a></li>";
               echo "<li><a href='admin.php' class='nav-link admin'>ADMINISTRATORS</a></li>";
-              echo "<li><a href='admin.php' class='nav-link admin'>ADMINISTRATORS</a></li>";
+              echo "<li><a href='report.php' class='nav-link report'>REPORTS</a></li>";
             } else if ($_SESSION['role'] == 2) {
               echo "<li><a href='approval.php' class='nav-link approval'>APPROVAL</a></li>";
             }

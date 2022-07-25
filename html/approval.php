@@ -59,7 +59,7 @@ $table = mysqli_fetch_array($result);
             if ($_SESSION['role'] == 1) {
               echo "<li><a href='approval.php' class='nav-link approval'>APPROVAL</a></li>";
               echo "<li><a href='admin.php' class='nav-link admin'>ADMINISTRATORS</a></li>";
-              echo "<li><a href='admin.php' class='nav-link admin'>ADMINISTRATORS</a></li>";
+              echo "<li><a href='report.php' class='nav-link report'>REPORTS</a></li>";
             } else if ($_SESSION['role'] == 2) {
               echo "<li><a href='approval.php' class='nav-link approval'>APPROVAL</a></li>";
             }
@@ -204,7 +204,7 @@ $(document).ready(function() {
   $("#table.table").DataTable().column(6).search("Pending").draw();
   $('div.ddl-container').html(
     "<select id='ddl-filter' class='form-control'><option value='Pending'>Pending</option><option value='Approved'>Approved</option><option value='Rejected'>Rejected</option><option value='Canceled'>Canceled</option></select>"
-    );
+  );
   $('#ddl-filter').on('change', function() {
     var filterValue = this.value;
     $('#table.table').DataTable().column(6).search(filterValue).draw();

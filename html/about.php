@@ -40,6 +40,7 @@ if (!isset($_SESSION['logged-in']) || $_SESSION['logged-in'] == false) {
             if ($_SESSION['role'] == 1) {
               echo "<li><a href='approval.php' class='nav-link approval'>APPROVAL</a></li>";
               echo "<li><a href='admin.php' class='nav-link admin'>ADMINISTRATORS</a></li>";
+              echo "<li><a href='report.php' class='nav-link report'>REPORTS</a></li>";
             } else if ($_SESSION['role'] == 2) {
               echo "<li><a href='approval.php' class='nav-link approval'>APPROVAL</a></li>";
             }
@@ -77,10 +78,14 @@ if (!isset($_SESSION['logged-in']) || $_SESSION['logged-in'] == false) {
     <div class="main-page">
       <div>
         <h3>CoLab Raub System</h3><br>
-        <p class="abt-h2">Computer Lab System (COLAB System) for UiTM Raub was built since 2022 by a group of CS110 students for their ISP250 Final Project.
-          <br>This project aims to give an aid for all UiTM Raub user especially in this infostructure section to give the the best services of computer lab
-          <br>that this campus have ever had. However, this system is still in progress and needs more observations from time to time to keep it updated as soon as possible
-          <br>so that all user will be able to experience the most mesmerizing way in booking a computer or a lab in UiTM Raub.
+        <p class="abt-h2">Computer Lab System (COLAB System) for UiTM Raub was built since 2022 by a group of CS110
+          students for their ISP250 Final Project.
+          <br>This project aims to give an aid for all UiTM Raub user especially in this infostructure section to give
+          the the best services of computer lab
+          <br>that this campus have ever had. However, this system is still in progress and needs more observations from
+          time to time to keep it updated as soon as possible
+          <br>so that all user will be able to experience the most mesmerizing way in booking a computer or a lab in
+          UiTM Raub.
         </p>
       </div>
     </div>
