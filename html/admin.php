@@ -55,6 +55,7 @@ $table = mysqli_fetch_array($result);
             if ($_SESSION['role'] == 1) {
               echo "<li><a href='approval.php' class='nav-link approval'>APPROVAL</a></li>";
               echo "<li><a href='admin.php' class='nav-link admin'>ADMINISTRATORS</a></li>";
+              echo "<li><a href='admin.php' class='nav-link admin'>ADMINISTRATORS</a></li>";
             } else if ($_SESSION['role'] == 2) {
               echo "<li><a href='approval.php' class='nav-link approval'>APPROVAL</a></li>";
             }
@@ -131,11 +132,11 @@ $table = mysqli_fetch_array($result);
                 echo "<td>$row[Role_Type]</td>";
               }
             ?>
-              <td id="action">
-                <?php echo "<a href=\"../php/setAdmin.php?role=1&id=$row[USER_ID]\">Admin</a>" ?>
-                <?php echo "<a href=\"../php/setAdmin.php?role=2&id=$row[USER_ID]\">Approver</a>" ?>
-                <?php echo "<a href=\"../php/setAdmin.php?role=3&id=$row[USER_ID]\">Remove Role</a>" ?>
-              </td>
+            <td id="action">
+              <?php echo "<a href=\"../php/setAdmin.php?role=1&id=$row[USER_ID]\">Admin</a>" ?>
+              <?php echo "<a href=\"../php/setAdmin.php?role=2&id=$row[USER_ID]\">Approver</a>" ?>
+              <?php echo "<a href=\"../php/setAdmin.php?role=3&id=$row[USER_ID]\">Remove Role</a>" ?>
+            </td>
             <?php
             }
             ?>
@@ -148,86 +149,88 @@ $table = mysqli_fetch_array($result);
 </body>
 <script src="../js/main.js"></script>
 <script>
-  var role = "<?php echo $_SESSION['role'] ?>";
-  if (role == -1) {
-    document.querySelector("#new-booking").href = "new-stud-book.php";
-  } else {
-    document.querySelector("#new-booking").href = "new-staff-book.php";
-  }
+var role = "<?php echo $_SESSION['role'] ?>";
+if (role == -1) {
+  document.querySelector("#new-booking").href = "new-stud-book.php";
+} else {
+  document.querySelector("#new-booking").href = "new-staff-book.php";
+}
 </script>
 <script>
-  $(document).ready(function() {
-    $('#table.table').DataTable({
-      "pageLength": 10,
-      "lengthChange": false,
-      "order": [1, "asc"],
-      'columnDefs': [{
-        "targets": 5,
-        "className": "approve_status"
-      }],
-      dom: '<"ddl-container">frtip'
-    });
-    $('div.ddl-container').html("<select id='ddl-filter' class='form-control'><option value='All'>All</option><option value='Admin'>Admin</option><option value='Approver'>Approver</option><option value='User'>User</option></select>");
-    $('#ddl-filter').on('change', function() {
-      var filterValue = this.value;
-      if (filterValue == 'All') {
-        $('#table.table').DataTable().column(4).search('').draw();
-      } else {
-        $('#table.table').DataTable().column(4).search(filterValue).draw();
-      }
-    });
+$(document).ready(function() {
+  $('#table.table').DataTable({
+    "pageLength": 10,
+    "lengthChange": false,
+    "order": [1, "asc"],
+    'columnDefs': [{
+      "targets": 5,
+      "className": "approve_status"
+    }],
+    dom: '<"ddl-container">frtip'
   });
+  $('div.ddl-container').html(
+    "<select id='ddl-filter' class='form-control'><option value='All'>All</option><option value='Admin'>Admin</option><option value='Approver'>Approver</option><option value='User'>User</option></select>"
+    );
+  $('#ddl-filter').on('change', function() {
+    var filterValue = this.value;
+    if (filterValue == 'All') {
+      $('#table.table').DataTable().column(4).search('').draw();
+    } else {
+      $('#table.table').DataTable().column(4).search(filterValue).draw();
+    }
+  });
+});
 </script>
 <script>
-  if (typeof window.history.pushState == 'function') {
-    window.history.pushState({}, "Hide", '<?php echo $_SERVER['PHP_SELF']; ?>');
-  }
+if (typeof window.history.pushState == 'function') {
+  window.history.pushState({}, "Hide", '<?php echo $_SERVER['PHP_SELF']; ?>');
+}
 </script>
 <script>
-  message = document.querySelector(".message");
+message = document.querySelector(".message");
 
-  function closeMessage() {
-    message.style.visibility = 'hidden';
-  }
+function closeMessage() {
+  message.style.visibility = 'hidden';
+}
 </script>
 <script>
-  var messages =
-    <?php
+var messages =
+  <?php
     if (isset($_GET['message'])) {
       echo "\"$_GET[message]\"";
     } else {
       echo -1;
     }
     ?>;
-  const messageBox = document.querySelector(".message");
-  if (messages == -1) {
-    messageBox.style.visibility = "hidden";
-  } else {
-    messageBox.style.visibility = "visible";
-  }
+const messageBox = document.querySelector(".message");
+if (messages == -1) {
+  messageBox.style.visibility = "hidden";
+} else {
+  messageBox.style.visibility = "visible";
+}
 </script>
 <script>
-  if (document.querySelector(".approve_status").innerHTML != null) {
-    approveStatus = document.querySelector(".approve_status").innerText;
-    console.log(approveStatus);
+if (document.querySelector(".approve_status").innerHTML != null) {
+  approveStatus = document.querySelector(".approve_status").innerText;
+  console.log(approveStatus);
+}
+
+
+function approveClick() {
+  if (confirm("Confirm approval?")) {
+
+  } else {
+    event.preventDefault();
   }
+}
 
+function rejectClick() {
+  if (confirm("Confirm rejecting?")) {
 
-  function approveClick() {
-    if (confirm("Confirm approval?")) {
-
-    } else {
-      event.preventDefault();
-    }
+  } else {
+    event.preventDefault();
   }
-
-  function rejectClick() {
-    if (confirm("Confirm rejecting?")) {
-
-    } else {
-      event.preventDefault();
-    }
-  }
+}
 </script>
 
 </html>

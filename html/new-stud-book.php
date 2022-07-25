@@ -41,6 +41,7 @@ if (!isset($_SESSION['logged-in']) || $_SESSION['logged-in'] == false) {
             if ($_SESSION['role'] == 1) {
               echo "<li><a href='approval.php' class='nav-link approval'>APPROVAL</a></li>";
               echo "<li><a href='admin.php' class='nav-link admin'>ADMINISTRATORS</a></li>";
+              echo "<li><a href='admin.php' class='nav-link admin'>ADMINISTRATORS</a></li>";
             } else if ($_SESSION['role'] == 2) {
               echo "<li><a href='approval.php' class='nav-link approval'>APPROVAL</a></li>";
             }
@@ -113,20 +114,20 @@ if (!isset($_SESSION['logged-in']) || $_SESSION['logged-in'] == false) {
 <script src="../js/main.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script>
-  $(document).ready(function() {
-    $("select.lab").change(function() {
-      var selectedLab = $(".lab option:selected").val();
-      $.ajax({
-        type: "POST",
-        url: "process-request.php",
-        data: {
-          lab: selectedLab
-        }
-      }).done(function(data) {
-        $("#computers").html(data);
-      });
+$(document).ready(function() {
+  $("select.lab").change(function() {
+    var selectedLab = $(".lab option:selected").val();
+    $.ajax({
+      type: "POST",
+      url: "process-request.php",
+      data: {
+        lab: selectedLab
+      }
+    }).done(function(data) {
+      $("#computers").html(data);
     });
   });
+});
 </script>
 
 </html>

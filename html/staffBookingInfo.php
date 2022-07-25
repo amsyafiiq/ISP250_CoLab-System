@@ -41,6 +41,7 @@ $booking_data = $_SESSION['booking_data'];
             if ($_SESSION['role'] == 1) {
               echo "<li><a href='approval.php' class='nav-link approval'>APPROVAL</a></li>";
               echo "<li><a href='admin.php' class='nav-link admin'>ADMINISTRATORS</a></li>";
+              echo "<li><a href='admin.php' class='nav-link admin'>ADMINISTRATORS</a></li>";
             } else if ($_SESSION['role'] == 2) {
               echo "<li><a href='approval.php' class='nav-link approval'>APPROVAL</a></li>";
             }
@@ -167,30 +168,30 @@ $booking_data = $_SESSION['booking_data'];
 </body>
 <script src="../js/main.js"></script>
 <script>
-  function confirmDelete() {
-    if (confirm("Do you want to cancel this booking?") == true) {
+function confirmDelete() {
+  if (confirm("Do you want to cancel this booking?") == true) {
 
-    } else {
-      event.preventDefault();
-    }
+  } else {
+    event.preventDefault();
   }
+}
 </script>
 <script>
-  const data =
-    <?php
+const data =
+  <?php
     if (isset($_GET['data'])) {
       echo "\"$_GET[data]\"";
     }
     ?>
 
-  if (data == 1) {
-    document.querySelector(".delete").style.visibility = "visible";
-    document.querySelector(".confirm").style.visibility = "hidden";
-  }
-  if (data == 2) {
-    document.querySelector(".delete").style.visibility = "hidden";
-    document.querySelector(".confirm").style.visibility = "visible";
-  }
+if (data == 1) {
+  document.querySelector(".delete").style.visibility = "visible";
+  document.querySelector(".confirm").style.visibility = "hidden";
+}
+if (data == 2) {
+  document.querySelector(".delete").style.visibility = "hidden";
+  document.querySelector(".confirm").style.visibility = "visible";
+}
 </script>
 
 </html>

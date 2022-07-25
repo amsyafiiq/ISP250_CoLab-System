@@ -26,7 +26,8 @@ $table = mysqli_fetch_array($result);
   <title>UiTM Raub CoLab System</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.2.3/css/buttons.dataTables.min.css" />
+  <link rel="stylesheet" type="text/css"
+    href="https://cdn.datatables.net/buttons/2.2.3/css/buttons.dataTables.min.css" />
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" />
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -57,6 +58,7 @@ $table = mysqli_fetch_array($result);
             <?php
             if ($_SESSION['role'] == 1) {
               echo "<li><a href='approval.php' class='nav-link approval'>APPROVAL</a></li>";
+              echo "<li><a href='admin.php' class='nav-link admin'>ADMINISTRATORS</a></li>";
               echo "<li><a href='admin.php' class='nav-link admin'>ADMINISTRATORS</a></li>";
             } else if ($_SESSION['role'] == 2) {
               echo "<li><a href='approval.php' class='nav-link approval'>APPROVAL</a></li>";
@@ -167,96 +169,98 @@ $table = mysqli_fetch_array($result);
 </body>
 <script src="../js/main.js"></script>
 <script>
-  var role = "<?php echo $_SESSION['role'] ?>";
-  if (role == -1) {
-    document.querySelector("#new-booking").href = "new-stud-book.php";
-  } else {
-    document.querySelector("#new-booking").href = "new-staff-book.php";
-  }
+var role = "<?php echo $_SESSION['role'] ?>";
+if (role == -1) {
+  document.querySelector("#new-booking").href = "new-stud-book.php";
+} else {
+  document.querySelector("#new-booking").href = "new-staff-book.php";
+}
 </script>
 <script>
-  $(document).ready(function() {
-    $('#table.table').DataTable({
-      "pagingType": "simple",
-      "pageLength": 7,
-      "order": [],
-      dom: '<"ddl-container">frtip',
-      'columnDefs': [{
-          'targets': [0, 1, 2, 3, 4, 5, 6, 7, 8],
-          'orderable': false,
-        },
-        {
-          "targets": 5,
-          "className": "approve_status"
-        },
-        {
-          "targets": 6,
-          "className": "text-center"
-        },
-        {
-          "targets": 7,
-          "className": "text-center"
-        }
-      ],
-    });
-    $("#table.table").DataTable().column(6).search("Pending").draw();
-    $('div.ddl-container').html("<select id='ddl-filter' class='form-control'><option value='Pending'>Pending</option><option value='Approved'>Approved</option><option value='Rejected'>Rejected</option><option value='Canceled'>Canceled</option></select>");
-    $('#ddl-filter').on('change', function() {
-      var filterValue = this.value;
-      $('#table.table').DataTable().column(6).search(filterValue).draw();
-    });
+$(document).ready(function() {
+  $('#table.table').DataTable({
+    "pagingType": "simple",
+    "pageLength": 7,
+    "order": [],
+    dom: '<"ddl-container">frtip',
+    'columnDefs': [{
+        'targets': [0, 1, 2, 3, 4, 5, 6, 7, 8],
+        'orderable': false,
+      },
+      {
+        "targets": 5,
+        "className": "approve_status"
+      },
+      {
+        "targets": 6,
+        "className": "text-center"
+      },
+      {
+        "targets": 7,
+        "className": "text-center"
+      }
+    ],
   });
+  $("#table.table").DataTable().column(6).search("Pending").draw();
+  $('div.ddl-container').html(
+    "<select id='ddl-filter' class='form-control'><option value='Pending'>Pending</option><option value='Approved'>Approved</option><option value='Rejected'>Rejected</option><option value='Canceled'>Canceled</option></select>"
+    );
+  $('#ddl-filter').on('change', function() {
+    var filterValue = this.value;
+    $('#table.table').DataTable().column(6).search(filterValue).draw();
+  });
+});
 </script>
 <script>
-  if (typeof window.history.pushState == 'function') {
-    window.history.pushState({}, "Hide", '<?php echo $_SERVER['PHP_SELF']; ?>');
-  }
+if (typeof window.history.pushState == 'function') {
+  window.history.pushState({}, "Hide", '<?php echo $_SERVER['PHP_SELF']; ?>');
+}
 </script>
 <script>
-  message = document.querySelector(".message");
+message = document.querySelector(".message");
 
-  function closeMessage() {
-    message.style.visibility = 'hidden';
-  }
+function closeMessage() {
+  message.style.visibility = 'hidden';
+}
 </script>
 <script>
-  var messages =
-    <?php
+var messages =
+  <?php
     if (isset($_GET['message'])) {
       echo "\"$_GET[message]\"";
     } else {
       echo -1;
     }
     ?>;
-  const messageBox = document.querySelector(".message");
-  if (messages == -1) {
-    messageBox.style.visibility = "hidden";
-  } else {
-    messageBox.style.visibility = "visible";
-  }
+const messageBox = document.querySelector(".message");
+if (messages == -1) {
+  messageBox.style.visibility = "hidden";
+} else {
+  messageBox.style.visibility = "visible";
+}
 </script>
 <script>
-  if (document.querySelector(".approve_status").innerHTML != null) {
-    approveStatus = document.querySelector(".approve_status").innerText;
-    console.log(approveStatus);
+if (document.querySelector(".approve_status").innerHTML != null) {
+  approveStatus = document.querySelector(".approve_status").innerText;
+  console.log(approveStatus);
+}
+
+
+function approveClick() {
+  if (confirm("Confirm approval?")) {
+
+  } else {
+    event.preventDefault();
   }
+}
 
+function rejectClick() {
+  if (confirm("Confirm rejecting?")) {
 
-  function approveClick() {
-    if (confirm("Confirm approval?")) {
-
-    } else {
-      event.preventDefault();
-    }
+  } else {
+    event.preventDefault();
   }
-
-  function rejectClick() {
-    if (confirm("Confirm rejecting?")) {
-
-    } else {
-      event.preventDefault();
-    }
-  }
+}
 </script>
 
 </html>

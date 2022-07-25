@@ -11,7 +11,7 @@ $sql;
 $result;
 
 if ($radio == 1) {
-  $sql = "SELECT * FROM `vw_staff_phg` WHERE `USER_ID`='$id' AND `USER_PASSWORD`='$password' ";
+  $sql = "SELECT *, aes_decrypt(USER_PASSWORD, 'uitm123') as USER_PASSWORDs FROM `vw_staff_phg` WHERE `USER_ID`='$id' AND aes_decrypt(USER_PASSWORD, 'uitm123') ='$password' ";
   $result = mysqli_query($conn, $sql);
 } else if ($radio == 2) {
   $sql = "SELECT * FROM `vw_student_phg` WHERE `studentno`='$id' AND `studenticno`='$password' ";
@@ -25,13 +25,13 @@ if (mysqli_num_rows($result) === 1) {
   $row = mysqli_fetch_assoc($result);
 
   if ($radio == 1) {
-    if ($row['USER_ID'] === $id && $row['USER_PASSWORD'] === $password) {
+    if ($row['USER_ID'] === $id && $row['USER_PASSWORDs'] === $password) {
       echo "Logged";
       $_SESSION['id'] = $row['USER_ID'];
       $_SESSION['username'] = $row['USER_NAME'];
       $_SESSION['password'] = $row['USER_PASSWORD'];
       $_SESSION['role'] = $row['Role_ID'];
-      $_SESSION['logged-in'] = true; 
+      $_SESSION['logged-in'] = true;
       header("Location: ../html/index.php");
       exit();
     }

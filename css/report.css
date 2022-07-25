@@ -1,0 +1,49 @@
+.report-section h3 {
+  font-family: "glacial_indifferenceregular";
+  font-size: 1.3em;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+.main-page {
+  display: block;
+  margin-top: 3em;
+  margin-left: 5em;
+  margin-right: 5em;
+  height: calc(100vh - 230px);
+}
+
+.lab-container h4, .lab-container h5,.lab-container p {
+  color: #fff;
+}
+
+.lab-container {
+  background-color: rgba(124, 124, 124, 0.3);
+  padding: 2em;
+  border-radius: 2em;
+}
+
+.lab-container h4 {
+  font-size: 1.2em;
+  text-align: center;
+  margin-bottom: 0.5em;
+}
+
+.lab-container h5 {
+  font-size: 1.1em;
+}
+
+.report-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  gap: 2em;
+}
+
+.grid-container {
+  display: grid;
+  gap: 2em;
+  height: 100%;
+}
+
+

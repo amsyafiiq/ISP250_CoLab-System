@@ -56,6 +56,7 @@ $table = mysqli_fetch_array($result);
             if ($_SESSION['role'] == 1) {
               echo "<li><a href='approval.php' class='nav-link approval'>APPROVAL</a></li>";
               echo "<li><a href='admin.php' class='nav-link admin'>ADMINISTRATORS</a></li>";
+              echo "<li><a href='admin.php' class='nav-link admin'>ADMINISTRATORS</a></li>";
             } else if ($_SESSION['role'] == 2) {
               echo "<li><a href='approval.php' class='nav-link approval'>APPROVAL</a></li>";
             }
@@ -142,49 +143,49 @@ $table = mysqli_fetch_array($result);
 </body>
 <script src="../js/main.js"></script>
 <script>
-  var role = "<?php echo $_SESSION['role'] ?>";
-  if (role == -1) {
-    document.querySelector("#new-booking").href = "new-stud-book.php";
-  } else {
-    document.querySelector("#new-booking").href = "new-staff-book.php";
-  }
+var role = "<?php echo $_SESSION['role'] ?>";
+if (role == -1) {
+  document.querySelector("#new-booking").href = "new-stud-book.php";
+} else {
+  document.querySelector("#new-booking").href = "new-staff-book.php";
+}
 </script>
 <script>
-  $(document).ready(function() {
-    $('#table.table').DataTable({
-      "pagingType": "simple",
-      "pageLength": 7,
-      "lengthChange": false,
-    });
+$(document).ready(function() {
+  $('#table.table').DataTable({
+    "pagingType": "simple",
+    "pageLength": 7,
+    "lengthChange": false,
   });
+});
 </script>
 <script>
-  if (typeof window.history.pushState == 'function') {
-    window.history.pushState({}, "Hide", '<?php echo $_SERVER['PHP_SELF']; ?>');
-  }
+if (typeof window.history.pushState == 'function') {
+  window.history.pushState({}, "Hide", '<?php echo $_SERVER['PHP_SELF']; ?>');
+}
 </script>
 <script>
-  message = document.querySelector(".message");
+message = document.querySelector(".message");
 
-  function closeMessage() {
-    message.style.visibility = 'hidden';
-  }
+function closeMessage() {
+  message.style.visibility = 'hidden';
+}
 </script>
 <script>
-  var messages =
-    <?php
+var messages =
+  <?php
     if (isset($_GET['message'])) {
       echo "\"$_GET[message]\"";
     } else {
       echo -1;
     }
     ?>;
-  const messageBox = document.querySelector(".message");
-  if (messages == -1) {
-    messageBox.style.visibility = "hidden";
-  } else {
-    messageBox.style.visibility = "visible";
-  }
+const messageBox = document.querySelector(".message");
+if (messages == -1) {
+  messageBox.style.visibility = "hidden";
+} else {
+  messageBox.style.visibility = "visible";
+}
 </script>
 
 </html>
