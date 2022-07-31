@@ -13,20 +13,34 @@
 }
 
 .pic-container {
-  display: flex;
+  display: grid;
   justify-content: center;
+  grid-template-columns: auto auto auto;
   gap: 20%;
 }
 
 .pic-container span {
+  width: 20em;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  gap: 10px;
   background-color: #634b66;
-  padding: 30px 50px 30px 30px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  /* padding: 30px 50px 30px 30px; */
   color: #fff;
   font-size: 18px;
   border-top-right-radius: 50px;
   border-bottom-right-radius: 50px;
 }
 
-#pic-name {
-  text-align: center;
+.pic-container pre {
+  text-align: left;
+}
+
+
+.pic-container img {
+  width: 60px;
+  height: auto;
 }

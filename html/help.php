@@ -81,16 +81,49 @@ if (!isset($_SESSION['logged-in']) || $_SESSION['logged-in'] == false) {
       </div>
       <div class="pic-container">
         <span>
-          <pre>First PiC : +(60)9 - 3515209</pre>
-          <pre id="pic-name">(Puan Noorasikin Binti Mustapa)</pre>
+          <img src="../img/anis.png" alt="">
+          <div>
+            <pre>Anis Safiyyah Binti Talaha</pre>
+            <pre id="pic-name">2020490858</pre>
+            <pre id="pic-name">+60 11-6334 1282</pre>
+            <pre>asafiyyah01@gmail.com</pre>
+          </div>
         </span>
         <span>
-          <pre>First PiC : +(60)9 - 3515207</pre>
-          <pre id="pic-name">(En. Muhammad Azri Bin Yusoff)</pre>
+          <img src="../img/nurin.png" alt="Nurin Ewani">
+          <div>
+            <pre>Nurin Ewani Binti Shahudin</pre>
+            <pre id="pic-name">2020890052</pre>
+            <pre>+60 11-1038 0118</pre>
+            <pre>nurinewani@gmail.com</pre>
+          </div>
         </span>
         <span>
-          <pre>First PiC : +(60)9 - 3515211</pre>
-          <pre id="pic-name">(Encik Jefreyzan Muhlan)</pre>
+          <img src="../img/fizi.png" alt="">
+          <div>
+            <pre>Iman Hafizi Bin Md Zin</pre>
+            <pre id="pic-name">2020494344</pre>
+            <pre id="pic-name">+60 10-428 1940</pre>
+            <pre>manfizii34@gmail.com</pre>
+          </div>
+        </span>
+        <span>
+          <img src="../img/roy.png" alt="Roy">
+          <div>
+            <pre>Vinit Roy A/L Letchumanan</pre>
+            <pre id="pic-name">2020812022</pre>
+            <pre>+60 17-347 2478</pre>
+            <pre>vinitrxy27@gmail.com</pre>
+          </div>
+        </span>
+        <span>
+          <img src="../img/syafiq.png" alt="Syafiq">
+          <div>
+            <pre>Muhammad Amirul Syafiq Bin Mohd Nor</pre>
+            <pre id="pic-name">2020620108</pre>
+            <pre>+60 17-670 2545</pre>
+            <pre>amsyafiiq@gmail.com</pre>
+          </div>
         </span>
       </div>
     </div>
